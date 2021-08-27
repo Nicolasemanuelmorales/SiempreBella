@@ -4,6 +4,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../screens/login/Login.screen";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import HomeStackNavigator from "./homeStackNavigator";
+import ServiciosStack from "./serviciosStackNavigator";
+import DrawerNavigator from "./DrawerNavigator";
+
 // import Modal from "react-native-modal";
 // import Loading from "../components/Loading/Loading.component";
 // import { IRootState } from "../redux/reducers/rootReducer";
@@ -28,7 +31,7 @@ export default function LoginStackNavigator() {
         screenOptions={{ gestureEnabled: false, headerShown: false }}
       >
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="HomeStack" component={HomeStackNavigator} />
+        <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
       </Stack.Navigator>
       {/* <Modal isVisible={loader} backdropOpacity={0.4} animationIn="flash">
         {loader ? <Loading size={50} /> : <View></View>}

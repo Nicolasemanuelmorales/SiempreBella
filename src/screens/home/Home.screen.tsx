@@ -10,7 +10,7 @@ export default function Home(props: IProps) {
 
   return (
     <View style={{ marginTop: 50 }}>
-      <Button title={"Home"} onPress={() => navigation.navigate("Login")} />
+      <Button title={"Home"} onPress={() => navigation.navigate("Servicios")} />
     </View>
   );
 }

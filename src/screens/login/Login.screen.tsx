@@ -12,7 +12,7 @@ export default function Login(props: IProps) {
     <View style={{ marginTop: 50 }}>
       <Button
         title={"Login"}
-        onPress={() => navigation.navigate("HomeStack")}
+        onPress={() => navigation.navigate("DrawerNavigator")}
       />
     </View>
   );
