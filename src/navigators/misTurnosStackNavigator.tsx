@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 export default function MisTurnosStackNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="AdminScreen"
+      initialRouteName="MisTurnosScreen"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="MisTurnosScreen" component={MisTurnosScreen} />

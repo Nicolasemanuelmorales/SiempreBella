@@ -6,6 +6,7 @@ import Home from "./homeStackNavigator";
 import Admin from "./adminStackNavigator";
 import Servicios from "./serviciosStackNavigator";
 import MisTurnos from "./misTurnosStackNavigator";
+import colors from "../../assets/colors";
 
 export default function DrawerNavigator() {
   const Drawer = createDrawerNavigator();
@@ -14,15 +15,27 @@ export default function DrawerNavigator() {
     <Drawer.Navigator
       initialRouteName="Home"
       screenOptions={{
-        swipeEnabled: true,
-        headerShown: false,
+        headerTintColor: colors.BLANCO,
+        headerStyle: { backgroundColor: colors.PRINCIPAL },
       }}
       drawerContent={(props) => <DrawerNavigatorContent {...props} />}
     >
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Servicios" component={Servicios} />
-      <Drawer.Screen name="MisTurnos" component={MisTurnos} />
-      <Drawer.Screen name="Admin" component={Admin} />
+      <Drawer.Screen name="Home" options={{ title: "HOME" }} component={Home} />
+      <Drawer.Screen
+        name="Servicios"
+        options={{ title: "SERVICIOS" }}
+        component={Servicios}
+      />
+      <Drawer.Screen
+        name="MisTurnos"
+        options={{ title: "MIS TURNOS" }}
+        component={MisTurnos}
+      />
+      <Drawer.Screen
+        name="Admin"
+        options={{ title: "ADMIN" }}
+        component={Admin}
+      />
     </Drawer.Navigator>
   );
 }

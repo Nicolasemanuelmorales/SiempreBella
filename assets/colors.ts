@@ -1,5 +1,6 @@
 const colors = {
-  ROJO_PRINCIPAL: "#844aa8",
+  PRINCIPAL: "#844aa8",
+  BLANCO: "#FFF",
 };
 
 export default colors;

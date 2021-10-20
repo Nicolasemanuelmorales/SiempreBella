@@ -3,20 +3,13 @@ import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../screens/login/Login.screen";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
-import HomeStackNavigator from "./homeStackNavigator";
-import ServiciosStack from "./serviciosStackNavigator";
-import DrawerNavigator from "./DrawerNavigator";
 
-// import Modal from "react-native-modal";
-// import Loading from "../components/Loading/Loading.component";
-// import { IRootState } from "../redux/reducers/rootReducer";
-// import { useSelector } from "react-redux";
+import DrawerNavigator from "./DrawerNavigator";
+import { StatusBar } from "react-native";
 
 const Stack = createStackNavigator();
 
 export default function LoginStackNavigator() {
-  //   const loader = useSelector((state: IRootState) => state.showLoader.value);
-
   const MyTheme = {
     ...DefaultTheme,
     colors: {
@@ -24,18 +17,19 @@ export default function LoginStackNavigator() {
       background: "#FFF",
     },
   };
+
   return (
-    <NavigationContainer theme={MyTheme}>
-      <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{ gestureEnabled: false, headerShown: false }}
-      >
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
-      </Stack.Navigator>
-      {/* <Modal isVisible={loader} backdropOpacity={0.4} animationIn="flash">
-        {loader ? <Loading size={50} /> : <View></View>}
-      </Modal> */}
-    </NavigationContainer>
+    <>
+      <NavigationContainer theme={MyTheme}>
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar hidden />
+    </>
   );
 }

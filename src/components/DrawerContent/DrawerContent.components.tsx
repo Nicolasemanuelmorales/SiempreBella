@@ -4,6 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { View, Text, Image } from "react-native";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import styles from "./DrawerContent.styles";
+import colors from "../../../assets/colors";
 
 interface IProps {
   navigation: any;
@@ -13,26 +14,26 @@ function DrawerNavigatorContent({ navigation }: IProps) {
   return (
     <>
       <DrawerContentScrollView {...navigation}>
-        <Drawer.Section>
+        <Drawer.Section
+          style={{ backgroundColor: colors.PRINCIPAL, marginTop: -5 }}
+        >
           <View style={styles.headerDrawer}>
             <View style={styles.circulo}>
               <Image
-                style={{ width: 50, height: 50 }}
+                style={{ width: 60, height: 60 }}
                 source={require("../../../assets/images/flor.png")}
               />
             </View>
             <View style={styles.headerTitulo}>
-              <Text
-                style={{ fontWeight: "bold", color: "#844aa8", fontSize: 20 }}
-              >
+              <Text style={{ fontWeight: "bold", color: "#fff", fontSize: 20 }}>
                 Siempre Bella
               </Text>
             </View>
           </View>
         </Drawer.Section>
         <Drawer.Item
-          label="Inicio"
-          onPress={() => {
+          label={<Text style={styles.inactive}>Inicio</Text>}
+          onTouchEnd={() => {
             navigation.reset({
               routes: [{ name: "Home" }],
             });
@@ -42,14 +43,14 @@ function DrawerNavigatorContent({ navigation }: IProps) {
             <Icon
               style={styles.icon}
               name={"home"}
-              size={18}
-              color={"#844aa8"}
+              size={22}
+              color={colors.PRINCIPAL}
             />
           )}
         />
         <Drawer.Item
-          label="Servicios"
-          onPress={() => {
+          label={<Text style={styles.inactive}>Servicios</Text>}
+          onTouchEnd={() => {
             navigation.reset({
               routes: [{ name: "Servicios" }],
             });
@@ -59,14 +60,14 @@ function DrawerNavigatorContent({ navigation }: IProps) {
             <Icon
               style={styles.icon}
               name={"hands-helping"}
-              size={18}
-              color={"#844aa8"}
+              size={22}
+              color={colors.PRINCIPAL}
             />
           )}
         />
         <Drawer.Item
-          label="Mis Turnos"
-          onPress={() => {
+          label={<Text style={styles.inactive}>Mis Turnos</Text>}
+          onTouchEnd={() => {
             navigation.reset({
               routes: [{ name: "MisTurnos" }],
             });
@@ -77,14 +78,14 @@ function DrawerNavigatorContent({ navigation }: IProps) {
               style={styles.icon}
               name={"calendar-alt"}
               solid
-              size={18}
-              color={"#844aa8"}
+              size={22}
+              color={colors.PRINCIPAL}
             />
           )}
         />
         <Drawer.Item
-          label="Cerrar Sesión"
-          onPress={() => {
+          label={<Text style={styles.inactive}>Cerrar Sesión</Text>}
+          onTouchEnd={() => {
             navigation.reset({
               routes: [{ name: "Login" }],
             });
@@ -95,14 +96,14 @@ function DrawerNavigatorContent({ navigation }: IProps) {
               style={styles.icon}
               name={"sign-out-alt"}
               solid
-              size={18}
-              color={"#844aa8"}
+              size={22}
+              color={colors.PRINCIPAL}
             />
           )}
         />
         <Drawer.Item
-          label="Admin"
-          onPress={() => {
+          label={<Text style={styles.inactive}>Admin</Text>}
+          onTouchEnd={() => {
             navigation.reset({
               routes: [{ name: "Admin" }],
             });
@@ -112,8 +113,8 @@ function DrawerNavigatorContent({ navigation }: IProps) {
             <Icon
               style={styles.icon}
               name={"user-shield"}
-              size={18}
-              color={"orange"}
+              size={22}
+              color={colors.PRINCIPAL}
             />
           )}
         />

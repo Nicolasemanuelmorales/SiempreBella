@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from "../../../assets/colors";
 
 const styles = StyleSheet.create({
   headerDrawer: {
@@ -10,14 +11,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   drawerStyle: {
-    paddingLeft: "4%",
+    paddingLeft: 22,
   },
   circulo: {
-    width: 48,
-    height: 48,
+    width: 65,
+    height: 65,
+    backgroundColor: "#fff",
+    borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
   },
-  icon: { width: 25 },
+  icon: {
+    width: 30,
+  },
+  active: {
+    fontWeight: "bold",
+    fontSize: 15,
+    color: colors.PRINCIPAL,
+  },
+  inactive: {
+    fontSize: 15,
+  },
 });
 export default styles;
