@@ -1,5 +1,7 @@
 import React from "react";
-import { Button, View } from "react-native";
+import { Button, ScrollView, Text, View } from "react-native";
+import colors from "../../../assets/colors";
+import CardTurno from "../../components/CardTurno/CardTurno.components";
 
 interface IProps {
   navigation: any;
@@ -9,11 +11,13 @@ export default function MisTurnos(props: IProps) {
   const { navigation } = props;
 
   return (
-    <View style={{ marginTop: 50 }}>
-      <Button
-        title={"MisTurnos"}
-        onPress={() => navigation.navigate("Admin")}
-      />
-    </View>
+    <ScrollView>
+      <View style={{ marginBottom: 20 }}>
+        <CardTurno />
+        <CardTurno />
+        <CardTurno />
+        <CardTurno />
+      </View>
+    </ScrollView>
   );
 }

@@ -18,16 +18,21 @@ function DrawerNavigatorContent({ navigation }: IProps) {
           style={{ backgroundColor: colors.PRINCIPAL, marginTop: -5 }}
         >
           <View style={styles.headerDrawer}>
-            <View style={styles.circulo}>
+            <View
+              style={styles.circulo}
+              onTouchEnd={() => {
+                navigation.reset({
+                  routes: [{ name: "Home" }],
+                });
+              }}
+            >
               <Image
-                style={{ width: 60, height: 60 }}
+                style={styles.img}
                 source={require("../../../assets/images/flor.png")}
               />
             </View>
             <View style={styles.headerTitulo}>
-              <Text style={{ fontWeight: "bold", color: "#fff", fontSize: 20 }}>
-                Siempre Bella
-              </Text>
+              <Text style={styles.title}>Siempre Bella</Text>
             </View>
           </View>
         </Drawer.Section>

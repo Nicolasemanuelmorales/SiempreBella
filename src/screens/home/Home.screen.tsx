@@ -9,9 +9,5 @@ interface IProps {
 export default function Home(props: IProps) {
   const { navigation } = props;
 
-  return (
-    <View style={{ marginTop: 50, width: "50%", alignSelf: "center" }}>
-      <Boton title={"Home"} action={() => navigation.navigate("Servicios")} />
-    </View>
-  );
+  return null;
 }

@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   drawerStyle: {
-    paddingLeft: 22,
+    paddingLeft: 20,
   },
   circulo: {
     width: 65,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
-    width: 30,
+    width: 32,
   },
   active: {
     fontWeight: "bold",
@@ -31,6 +31,15 @@ const styles = StyleSheet.create({
   },
   inactive: {
     fontSize: 15,
+  },
+  img: {
+    width: 60,
+    height: 60,
+  },
+  title: {
+    fontWeight: "bold",
+    color: "#fff",
+    fontSize: 20,
   },
 });
 export default styles;
