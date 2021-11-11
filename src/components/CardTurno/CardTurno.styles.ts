@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   cancel: {
     paddingBottom: 4,
     textAlign: "center",
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "bold",
     color: colors.PRINCIPAL,
     textDecorationLine: "underline",
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   },
   flexR: {
     flexDirection: "row",
+    marginTop: 5,
   },
   textoService: {
     fontSize: 14,

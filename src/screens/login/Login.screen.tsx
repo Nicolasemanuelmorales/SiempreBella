@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import colors from "../../../assets/colors";
-import Boton from "../../components/boton/boton.components";
+import Boton from "../../components/Boton/boton.components";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import styles from "./Login.styles";
 

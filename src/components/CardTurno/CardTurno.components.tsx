@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 import colors from "../../../assets/colors";
-import Boton from "../boton/boton.components";
+import Boton from "../Boton/boton.components";
 import styles from "./CardTurno.styles";
 
 interface IProps {
@@ -27,14 +27,15 @@ export default function CardTurno(props: IProps) {
             <Text style={styles.pagoB}>Método de pago:</Text>
             <Text style={styles.pagoL}>Mercado Pago.</Text>
           </View>
-          <View style={styles.flexR}>
-            <Text style={styles.pagoB}>Estado:</Text>
-            <Text style={styles.pagoL}>Abonado.</Text>
-          </View>
         </View>
         <View style={styles.boton}>
           <Text style={styles.cancel}>CANCELAR</Text>
-          <Boton h={30} title="Modificar" action={() => console.log("")} />
+          <Boton
+            size={13}
+            h={25}
+            title="Modificar"
+            action={() => console.log("")}
+          />
         </View>
       </View>
     </View>

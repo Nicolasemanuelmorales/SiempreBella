@@ -6,10 +6,11 @@ interface IProps {
   action: () => void;
   title: string;
   h?: number;
+  size?: number;
 }
 
 export default function Boton(props: IProps) {
-  const { action, title, h } = props;
+  const { action, title, h, size } = props;
 
   return (
     <Button
@@ -17,8 +18,9 @@ export default function Boton(props: IProps) {
       contentStyle={{ height: h ? h : "auto" }}
       mode="contained"
       color={colors.PRINCIPAL}
+      labelStyle={{ fontSize: size > 0 ? size : 14 }}
       children={title}
-      onTouchEnd={action}
+      onTouchStart={action}
     />
   );
 }
