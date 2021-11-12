@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 import colors from "../../../assets/colors";
-import Boton from "../Boton/boton.components";
+import Boton from "../boton/boton.components";
 import styles from "./CardTurno.styles";
 
 interface IProps {

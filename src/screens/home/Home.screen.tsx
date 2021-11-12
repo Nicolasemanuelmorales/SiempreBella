@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import Boton from "../../components/Boton/boton.components";
+import Boton from "../../components/boton/boton.components";
 
 interface IProps {
   navigation: any;

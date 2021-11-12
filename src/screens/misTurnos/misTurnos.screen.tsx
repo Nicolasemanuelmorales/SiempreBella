@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ScrollView, View } from "react-native";
 import CardTurno from "../../components/CardTurno/CardTurno.components";
-import Boton from "../../components/Boton/boton.components";
+import Boton from "../../components/boton/boton.components";
 import ModalGeneral from "../../components/Modal/ModalGeneral.components";
 import AgregarTurno from "../../components/AgregarTurno/AgregarTurno.components";
 interface IProps {

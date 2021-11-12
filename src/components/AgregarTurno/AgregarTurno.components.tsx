@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import { TextInput, Chip, ProgressBar } from "react-native-paper";
 import colors from "../../../assets/colors";
-import Boton from "../../components/Boton/boton.components";
+import Boton from "../boton/boton.components";
 import Autocomplete from "../Autocomplete/Autocomplete.component";
 
 interface IProps {
