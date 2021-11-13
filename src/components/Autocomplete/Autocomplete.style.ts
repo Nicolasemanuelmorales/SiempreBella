@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from "../../../assets/colors";
 
 const styles = StyleSheet.create({
   textStyle: {
@@ -26,16 +27,43 @@ const styles = StyleSheet.create({
     elevation: 3,
     paddingTop: 5,
   },
-  arrowStyle: {
-    position: "absolute",
-    right: 0,
-    alignItems: "flex-end",
-    paddingTop: 22,
-    marginLeft: 9,
-    paddingRight: 15,
-  },
   triangle: {
     fontSize: 25,
+  },
+  boxGeneral: {
+    flex: 1,
+    flexDirection: "column",
+    width: "100%",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "rgba(0, 0, 0, 0.54)",
+    borderRadius: 4,
+    height: 56,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 14,
+    alignItems: "center",
+  },
+  placeHolder: {
+    height: 30,
+    position: "absolute",
+    top: -10,
+    left: 14,
+    paddingHorizontal: 3,
+  },
+  label: {
+    color: "rgba(0, 0, 0, 0.54)",
+    fontSize: 12,
+  },
+  timeMultiple: {
+    color: colors.PRINCIPAL,
+    fontWeight: "bold",
+    marginRight: 14,
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 export default styles;

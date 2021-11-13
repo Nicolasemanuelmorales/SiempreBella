@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Platform, Pressable } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome } from "@expo/vector-icons";
-import { Chip, TextInput } from "react-native-paper";
+import { Chip, ProgressBar, TextInput } from "react-native-paper";
 import styles from "./Autocomplete.style";
 import colors from "../../../assets/colors";
 
@@ -11,10 +11,17 @@ interface IProps {
   valueSeleccionado: (value: any) => void;
   data: any[];
   multiple?: boolean;
+  onylDrop?: boolean;
 }
 
 function Autocomplete(props: IProps) {
-  const { label, valueSeleccionado, data, multiple = false } = props;
+  const {
+    label,
+    valueSeleccionado,
+    data,
+    multiple = false,
+    onylDrop = false,
+  } = props;
   const [valueSelected, setValueSelected] = useState("");
   const [valueSelectedMulltiple, setValueSelectedMulltiple] = useState<any[]>(
     []
@@ -37,10 +44,10 @@ function Autocomplete(props: IProps) {
   };
 
   const onChangeValue = () => {
-    let aux: any[] = data.filter(
-      (item) => item.toLowerCase().indexOf(valueSelected.toLowerCase()) > -1
-    );
-    setDataSet(aux);
+    // let aux: any[] = data.filter(
+    //   (item) => item.toLowerCase().indexOf(valueSelected.toLowerCase()) > -1
+    // );
+    // setDataSet(aux);
     if (valueSelected == "") {
       setDataSet(dataAux);
     }
@@ -48,48 +55,85 @@ function Autocomplete(props: IProps) {
 
   useEffect(onChangeValue, [valueSelected]);
 
+  const deleteToArray = (text: any) => {
+    setValueSelectedMulltiple(
+      valueSelectedMulltiple.filter((item) => item !== text)
+    );
+  };
+
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "column",
-        width: "100%",
-      }}
-    >
-      <TextInput
-        theme={{
-          colors: {
-            primary: colors.PRINCIPAL,
-            background: colors.BLANCO,
-            error: "red",
-          },
-        }}
-        value={valueSelected}
-        onChangeText={(text) => {
-          setValueSelected(text), onChangeValue();
-        }}
-        onTouchStart={() => {
-          setOpen(!isOpen);
-        }}
-        label={label}
-        mode="outlined"
-        style={styles.textStyle}
-        multiline={false}
-        editable={true}
-        right={
-          <TextInput.Icon
-            name={() => (
-              <FontAwesome
-                onPress={() => setOpen(!isOpen)}
-                name={isOpen ? "angle-up" : "angle-down"}
-                color={"#9B9B9B"}
-                size={20}
-                style={styles.triangle}
-              />
-            )}
-          />
-        }
-      />
+    <View style={styles.boxGeneral}>
+      {!onylDrop ? (
+        <TextInput
+          theme={{
+            colors: {
+              primary: colors.PRINCIPAL,
+              background: colors.BLANCO,
+              error: "red",
+            },
+          }}
+          showSoftInputOnFocus={false}
+          value={valueSelected}
+          onChangeText={(text) => {
+            setValueSelected(text), onChangeValue();
+          }}
+          onTouchStart={() => {
+            setOpen(!isOpen);
+          }}
+          label={label}
+          mode="outlined"
+          style={styles.textStyle}
+          multiline={false}
+          editable={true}
+          right={
+            <TextInput.Icon
+              name={() => (
+                <FontAwesome
+                  onPress={() => setOpen(!isOpen)}
+                  name={isOpen ? "angle-up" : "angle-down"}
+                  color={"#9B9B9B"}
+                  size={20}
+                  style={styles.triangle}
+                />
+              )}
+            />
+          }
+        />
+      ) : (
+        <View onTouchStart={() => setOpen(!isOpen)} style={styles.input}>
+          <View
+            style={[
+              styles.placeHolder,
+              {
+                backgroundColor:
+                  valueSelected == "" ? "transparent" : colors.BLANCO,
+              },
+            ]}
+          >
+            <Text style={styles.label}>{valueSelected == "" ? "" : label}</Text>
+          </View>
+          <Text
+            style={{
+              color: valueSelected == "" ? "rgba(0, 0, 0, 0.54)" : "black",
+              fontSize: 16,
+            }}
+          >
+            {valueSelected == "" ? label : valueSelected}
+          </Text>
+          <View style={styles.row}>
+            {multiple ? (
+              <Text style={styles.timeMultiple} children={"15 MIN"} />
+            ) : null}
+            <FontAwesome
+              onPress={() => setOpen(!isOpen)}
+              name={isOpen ? "angle-up" : "angle-down"}
+              color={"#9B9B9B"}
+              size={20}
+              style={styles.triangle}
+            />
+          </View>
+        </View>
+      )}
 
       {isOpen ? (
         <View>
@@ -107,21 +151,18 @@ function Autocomplete(props: IProps) {
                 </Pressable>
               ) : (
                 dataSet.slice(0, 100).map((item: any, key: any) => (
-                  <View
-                    onTouchStart={() => {
+                  <Pressable
+                    onPress={() => {
                       onPressItemHandler(item);
                     }}
                     key={`item-${key}`}
                     style={styles.menuOptionStyle}
                   >
                     <Text
-                      onPress={() => {
-                        onPressItemHandler(item);
-                      }}
                       style={styles.textStyle}
                       key={`item-${key}`}
                     >{`${item}`}</Text>
-                  </View>
+                  </Pressable>
                 ))
               )}
             </ScrollView>
@@ -146,7 +187,7 @@ function Autocomplete(props: IProps) {
                       marginTop: 20,
                       alignSelf: "center",
                     }}
-                    onClose={() => console.log("Pressed")}
+                    onClose={() => deleteToArray(item)}
                   >
                     {item}
                   </Chip>

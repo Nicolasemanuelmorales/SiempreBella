@@ -4,12 +4,9 @@ import CardTurno from "../../components/CardTurno/CardTurno.components";
 import Boton from "../../components/boton/boton.components";
 import ModalGeneral from "../../components/Modal/ModalGeneral.components";
 import AgregarTurno from "../../components/AgregarTurno/AgregarTurno.components";
-interface IProps {
-  navigation: any;
-}
+import styles from "./misTurnos.styles";
 
-export default function MisTurnos(props: IProps) {
-  const { navigation } = props;
+export default function MisTurnos() {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -18,10 +15,10 @@ export default function MisTurnos(props: IProps) {
         children={<AgregarTurno actionCancel={() => setOpenModal(false)} />}
         open={openModal}
       />
-      <View style={{ marginTop: 20, width: "90%", alignSelf: "center" }}>
+      <View style={styles.agregar}>
         <Boton title="Agregar turno" action={() => setOpenModal(true)} />
       </View>
-      <View style={{ marginBottom: 20 }}>
+      <View style={styles.margen}>
         <CardTurno />
         <CardTurno />
         <CardTurno />

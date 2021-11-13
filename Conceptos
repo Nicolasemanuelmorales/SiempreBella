@@ -27,3 +27,11 @@ Admin
 	Estadistica
 
 
+
+
+Servicio{
+	Nombre
+	Precio
+	Descanso
+	Tiempo
+}

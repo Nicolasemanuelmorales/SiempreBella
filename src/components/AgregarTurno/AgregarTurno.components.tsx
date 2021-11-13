@@ -43,34 +43,17 @@ export default function AgregarTurno(props: IProps) {
           }
         />
       </View>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ width: "80%" }}>
-          <ProgressBar
-            style={{ marginTop: 8, width: "90%", alignSelf: "center" }}
-            progress={0.75}
-            color={colors.PRINCIPAL}
-          />
-        </View>
-        <View style={{ width: "20%" }}>
-          <Text
-            style={{
-              textAlign: "center",
-              color: colors.PRINCIPAL,
-              fontWeight: "bold",
-            }}
-            children={"15 MIN"}
-          />
-        </View>
-      </View>
+
       <Autocomplete
         multiple
+        onylDrop
         valueSeleccionado={setServicios}
         data={[
           "Cavado",
           "Media Pierna",
           "Pierna entera",
           "Pecho",
-          "Brazoz",
+          "Brazos",
           "Glúteo",
           "Espalda",
           "Media Espalda",
@@ -83,6 +66,7 @@ export default function AgregarTurno(props: IProps) {
       <View style={{ width: "100%", marginTop: 20 }}>
         <Autocomplete
           valueSeleccionado={setServicios}
+          onylDrop
           data={[
             "10:00",
             "10:15",
@@ -98,6 +82,7 @@ export default function AgregarTurno(props: IProps) {
       </View>
       <View style={{ width: "100%", marginTop: 20 }}>
         <Autocomplete
+          onylDrop
           valueSeleccionado={setServicios}
           data={[
             "Lunes 20/10",
@@ -113,6 +98,7 @@ export default function AgregarTurno(props: IProps) {
       </View>
       <View style={{ width: "100%", marginTop: 20 }}>
         <Autocomplete
+          onylDrop
           valueSeleccionado={setServicios}
           data={["Mercado Pago", "Home Banking", "Efectivo"]}
           label="Método de pago"
