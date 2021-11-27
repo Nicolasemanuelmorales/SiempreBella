@@ -13,10 +13,8 @@ interface IProps {
 function DrawerNavigatorContent({ navigation }: IProps) {
   return (
     <>
-      <DrawerContentScrollView {...navigation}>
-        <Drawer.Section
-          style={{ backgroundColor: colors.PRINCIPAL, marginTop: -5 }}
-        >
+      <DrawerContentScrollView style={{ marginTop: -23 }} {...navigation}>
+        <Drawer.Section style={styles.prin}>
           <View style={styles.headerDrawer}>
             <View
               style={styles.circulo}
@@ -89,6 +87,77 @@ function DrawerNavigatorContent({ navigation }: IProps) {
           )}
         />
         <Drawer.Item
+          label={<Text style={styles.inactive}>Turnos</Text>}
+          onTouchEnd={() => {
+            navigation.reset({
+              routes: [{ name: "Admin" }],
+            });
+          }}
+          style={styles.drawerStyle}
+          icon={() => (
+            <Icon
+              style={styles.icon}
+              name={"tools"}
+              size={22}
+              color={colors.PRINCIPAL}
+            />
+          )}
+        />
+        <Drawer.Item
+          label={<Text style={styles.inactive}>Servicios</Text>}
+          onTouchEnd={() => {
+            navigation.reset({
+              routes: [{ name: "Login" }],
+            });
+          }}
+          style={styles.drawerStyle}
+          icon={() => (
+            <Icon
+              style={styles.icon}
+              name={"concierge-bell"}
+              solid
+              size={22}
+              color={colors.PRINCIPAL}
+            />
+          )}
+        />
+        <Drawer.Item
+          label={<Text style={styles.inactive}>Precios</Text>}
+          onTouchEnd={() => {
+            navigation.reset({
+              routes: [{ name: "Login" }],
+            });
+          }}
+          style={styles.drawerStyle}
+          icon={() => (
+            <Icon
+              style={styles.icon}
+              name={"hand-holding-usd"}
+              solid
+              size={22}
+              color={colors.PRINCIPAL}
+            />
+          )}
+        />
+        <Drawer.Item
+          label={<Text style={styles.inactive}>Estadistica</Text>}
+          onTouchEnd={() => {
+            navigation.reset({
+              routes: [{ name: "Login" }],
+            });
+          }}
+          style={styles.drawerStyle}
+          icon={() => (
+            <Icon
+              style={styles.icon}
+              name={"chart-pie"}
+              solid
+              size={22}
+              color={colors.PRINCIPAL}
+            />
+          )}
+        />
+        <Drawer.Item
           label={<Text style={styles.inactive}>Cerrar Sesión</Text>}
           onTouchEnd={() => {
             navigation.reset({
@@ -101,23 +170,6 @@ function DrawerNavigatorContent({ navigation }: IProps) {
               style={styles.icon}
               name={"sign-out-alt"}
               solid
-              size={22}
-              color={colors.PRINCIPAL}
-            />
-          )}
-        />
-        <Drawer.Item
-          label={<Text style={styles.inactive}>Admin</Text>}
-          onTouchEnd={() => {
-            navigation.reset({
-              routes: [{ name: "Admin" }],
-            });
-          }}
-          style={styles.drawerStyle}
-          icon={() => (
-            <Icon
-              style={styles.icon}
-              name={"user-shield"}
               size={22}
               color={colors.PRINCIPAL}
             />

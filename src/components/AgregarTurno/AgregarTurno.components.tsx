@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View } from "react-native";
-import { TextInput, Chip, ProgressBar } from "react-native-paper";
 import colors from "../../../assets/colors";
 import Boton from "../boton/boton.components";
 import Autocomplete from "../Autocomplete/Autocomplete.component";
+import styles from "./AgregarTurno.styles";
 
 interface IProps {
   actionCancel: () => void;
@@ -11,37 +11,37 @@ interface IProps {
 
 export default function AgregarTurno(props: IProps) {
   const { actionCancel } = props;
-  const [servicios, setServicios] = React.useState("");
+  const [servicios, setServicios] = React.useState();
+  const [fecha, setFecha] = React.useState("");
+  const [horario, setHorario] = React.useState("");
+  const [metodoPago, setMetodoPago] = React.useState("");
+  const [disableFecha, setDisableFecha] = React.useState(true);
+  const [disableHorario, setDisableHorario] = React.useState(true);
+
+  const GuardarTurno = () => {
+    console.log("");
+  };
+
+  const updateFecha = () => {
+    console.log("");
+  };
+  useEffect(() => updateFecha, [servicios]);
+
+  const updateHorario = () => {
+    console.log("");
+  };
+  useEffect(() => updateHorario, [fecha]);
 
   return (
     <View style={{ width: "100%" }}>
-      <Text
-        children={"AGREGAR TURNO"}
-        style={{
-          textAlign: "center",
-          fontSize: 16,
-          fontWeight: "bold",
-          color: colors.PRINCIPAL,
+      <Text children={"AGREGAR TURNO"} style={styles.title} />
 
-          marginTop: 20,
-        }}
-      />
-      <View
-        style={{
-          width: "100%",
-          backgroundColor: colors.PRINCIPAL,
-          padding: 10,
-          borderRadius: 10,
-          marginBottom: 20,
-          marginTop: 20,
-        }}
-      >
-        <Text
-          style={{ color: colors.BLANCO }}
-          children={
-            "ATENCIÓN!!! Cada servicio tiene un tiempo de trabajo en minutos. Dependiendo la suma de todos los servicios seleccionados se habilitaran los horarios disponibles."
-          }
-        />
+      <View style={styles.atencion}>
+        <Text style={{ color: colors.BLANCO }}>
+          ATENCIÓN!!! Cada servicio tiene un tiempo de trabajo en minutos.
+          Dependiendo la suma de todos los servicios seleccionados se
+          habilitaran los horarios disponibles.
+        </Text>
       </View>
 
       <Autocomplete
@@ -63,10 +63,11 @@ export default function AgregarTurno(props: IProps) {
         label="Servicios"
       />
 
-      <View style={{ width: "100%", marginTop: 20 }}>
+      <View style={styles.boxAutocomplete}>
         <Autocomplete
-          valueSeleccionado={setServicios}
+          valueSeleccionado={setFecha}
           onylDrop
+          deshablitar={disableFecha}
           data={[
             "10:00",
             "10:15",
@@ -80,10 +81,12 @@ export default function AgregarTurno(props: IProps) {
           label="Fecha"
         />
       </View>
-      <View style={{ width: "100%", marginTop: 20 }}>
+
+      <View style={styles.boxAutocomplete}>
         <Autocomplete
           onylDrop
-          valueSeleccionado={setServicios}
+          deshablitar={disableHorario}
+          valueSeleccionado={setHorario}
           data={[
             "Lunes 20/10",
             "Martes 21/10",
@@ -96,26 +99,22 @@ export default function AgregarTurno(props: IProps) {
           label="Horario"
         />
       </View>
-      <View style={{ width: "100%", marginTop: 20 }}>
+
+      <View style={styles.boxAutocomplete}>
         <Autocomplete
           onylDrop
-          valueSeleccionado={setServicios}
+          valueSeleccionado={setMetodoPago}
           data={["Mercado Pago", "Home Banking", "Efectivo"]}
           label="Método de pago"
         />
       </View>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          marginTop: 20,
-        }}
-      >
-        <View style={{ flex: 1, marginRight: 10 }}>
+
+      <View style={styles.botonera}>
+        <View style={styles.boxBoton}>
           <Boton title="Cancelar" action={actionCancel} />
         </View>
-        <View style={{ flex: 1, marginLeft: 10 }}>
-          <Boton title="Agregar" action={() => console.log("")} />
+        <View style={styles.boxBoton}>
+          <Boton title="Agregar" action={() => GuardarTurno()} />
         </View>
       </View>
     </View>

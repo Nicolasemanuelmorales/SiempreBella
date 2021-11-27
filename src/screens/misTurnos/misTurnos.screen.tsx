@@ -16,7 +16,7 @@ export default function MisTurnos() {
         open={openModal}
       />
       <View style={styles.agregar}>
-        <Boton title="Agregar turno" action={() => setOpenModal(true)} />
+        <Boton h={30} title="Agregar turno" action={() => setOpenModal(true)} />
       </View>
       <View style={styles.margen}>
         <CardTurno />

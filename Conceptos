@@ -1,4 +1,3 @@
-
 Login
 	Facebook | Google
 
@@ -19,17 +18,20 @@ Mis turnos
 		Editar
 		Cancelar
 
-Admin
+Turnos (visualiza todos los turnos de aca a 2 semanas con posibilidad de edicion)
 	Panel
 		Editar
 		Agregar
 		Cancelar	
-	Estadistica
 
+Servicios (Habilitar que servicios pueden pedir y que horarios tomar)
 
+Precios 
 
+Estadistica (por dia, semana, mes)		
 
 Servicio{
+	Categoria
 	Nombre
 	Precio
 	Descanso

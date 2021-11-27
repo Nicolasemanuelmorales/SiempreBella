@@ -12,6 +12,7 @@ interface IProps {
   data: any[];
   multiple?: boolean;
   onylDrop?: boolean;
+  deshablitar?: boolean;
 }
 
 function Autocomplete(props: IProps) {
@@ -21,6 +22,7 @@ function Autocomplete(props: IProps) {
     data,
     multiple = false,
     onylDrop = false,
+    deshablitar = false,
   } = props;
   const [valueSelected, setValueSelected] = useState("");
   const [valueSelectedMulltiple, setValueSelectedMulltiple] = useState<any[]>(
@@ -78,7 +80,7 @@ function Autocomplete(props: IProps) {
             setValueSelected(text), onChangeValue();
           }}
           onTouchStart={() => {
-            setOpen(!isOpen);
+            deshablitar ? null : setOpen(!isOpen);
           }}
           label={label}
           mode="outlined"
@@ -89,7 +91,7 @@ function Autocomplete(props: IProps) {
             <TextInput.Icon
               name={() => (
                 <FontAwesome
-                  onPress={() => setOpen(!isOpen)}
+                  onPress={() => (deshablitar ? null : setOpen(!isOpen))}
                   name={isOpen ? "angle-up" : "angle-down"}
                   color={"#9B9B9B"}
                   size={20}
@@ -100,7 +102,10 @@ function Autocomplete(props: IProps) {
           }
         />
       ) : (
-        <View onTouchStart={() => setOpen(!isOpen)} style={styles.input}>
+        <View
+          onTouchStart={() => (deshablitar ? null : setOpen(!isOpen))}
+          style={deshablitar ? styles.inputDisabled : styles.input}
+        >
           <View
             style={[
               styles.placeHolder,
@@ -125,7 +130,7 @@ function Autocomplete(props: IProps) {
               <Text style={styles.timeMultiple} children={"15 MIN"} />
             ) : null}
             <FontAwesome
-              onPress={() => setOpen(!isOpen)}
+              onPress={() => (deshablitar ? null : setOpen(!isOpen))}
               name={isOpen ? "angle-up" : "angle-down"}
               color={"#9B9B9B"}
               size={20}

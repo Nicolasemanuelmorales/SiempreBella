@@ -27,6 +27,10 @@ export default function CardTurno(props: IProps) {
             <Text style={styles.pagoB}>Método de pago:</Text>
             <Text style={styles.pagoL}>Mercado Pago.</Text>
           </View>
+          <View style={styles.flexR2}>
+            <Text style={styles.pagoB}>Total:</Text>
+            <Text style={styles.pagoL}>$ 350.</Text>
+          </View>
         </View>
         <View style={styles.boton}>
           <Text style={styles.cancel}>CANCELAR</Text>

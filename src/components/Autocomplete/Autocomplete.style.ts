@@ -21,11 +21,6 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    maxHeight: 150,
-    elevation: 3,
-    paddingTop: 5,
   },
   triangle: {
     fontSize: 25,
@@ -38,6 +33,16 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: "rgba(0, 0, 0, 0.54)",
+    borderRadius: 4,
+    height: 56,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 14,
+    alignItems: "center",
+  },
+  inputDisabled: {
+    borderWidth: 1,
+    borderColor: "rgba(0, 0, 0, 0.20)",
     borderRadius: 4,
     height: 56,
     flexDirection: "row",

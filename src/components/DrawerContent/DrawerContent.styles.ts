@@ -21,6 +21,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  prin: {
+    backgroundColor: colors.PRINCIPAL,
+    marginTop: -5,
+    paddingTop: 23,
+  },
   icon: {
     width: 32,
   },

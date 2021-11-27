@@ -20,19 +20,19 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   Semana: {
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
     color: colors.BLANCO,
   },
   Numero: {
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
     color: colors.BLANCO,
   },
   hora: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: "bold",
     textAlign: "center",
     color: colors.BLANCO,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   pagoL: {
     fontSize: 14,
-    marginLeft: 10,
+    marginLeft: 5,
   },
   pagoB: {
     fontSize: 14,
@@ -77,6 +77,9 @@ const styles = StyleSheet.create({
   flexR: {
     flexDirection: "row",
     marginTop: 5,
+  },
+  flexR2: {
+    flexDirection: "row",
   },
   textoService: {
     fontSize: 14,
