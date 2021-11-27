@@ -4,6 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerNavigatorContent from "../components/DrawerContent/DrawerContent.components";
 import Home from "./homeStackNavigator";
 import Admin from "./adminStackNavigator";
+import Precio from "./precioStackNavigator";
 import Servicios from "./serviciosStackNavigator";
 import MisTurnos from "./misTurnosStackNavigator";
 import colors from "../../assets/colors";
@@ -35,6 +36,11 @@ export default function DrawerNavigator() {
         name="Admin"
         options={{ title: "ADMIN" }}
         component={Admin}
+      />
+      <Drawer.Screen
+        name="Precio"
+        options={{ title: "PRECIOS" }}
+        component={Precio}
       />
     </Drawer.Navigator>
   );

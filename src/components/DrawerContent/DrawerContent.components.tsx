@@ -104,7 +104,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
           )}
         />
         <Drawer.Item
-          label={<Text style={styles.inactive}>Servicios</Text>}
+          label={<Text style={styles.inactive}>Disponibilidad</Text>}
           onTouchEnd={() => {
             navigation.reset({
               routes: [{ name: "Login" }],
@@ -114,7 +114,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
           icon={() => (
             <Icon
               style={styles.icon}
-              name={"concierge-bell"}
+              name={"clock"}
               solid
               size={22}
               color={colors.PRINCIPAL}
@@ -125,7 +125,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
           label={<Text style={styles.inactive}>Precios</Text>}
           onTouchEnd={() => {
             navigation.reset({
-              routes: [{ name: "Login" }],
+              routes: [{ name: "Precio" }],
             });
           }}
           style={styles.drawerStyle}

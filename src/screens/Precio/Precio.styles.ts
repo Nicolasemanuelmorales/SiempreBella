@@ -26,5 +26,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 2,
   },
+  boxAutocomplete: {
+    width: "100%",
+    marginTop: 20,
+  },
+  botonera: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 20,
+  },
+  boxBoton: {
+    flex: 1,
+    marginRight: 10,
+  },
 });
 export default styles;
