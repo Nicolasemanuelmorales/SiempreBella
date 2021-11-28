@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   linea: {
-    height: 1.5,
+    height: 2,
     flex: 1,
     backgroundColor: colors.PRINCIPAL,
     display: "flex",
