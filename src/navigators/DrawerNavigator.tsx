@@ -5,6 +5,7 @@ import DrawerNavigatorContent from "../components/DrawerContent/DrawerContent.co
 import Home from "./homeStackNavigator";
 import Admin from "./adminStackNavigator";
 import Precio from "./precioStackNavigator";
+import Turnos from "./turnosStackNavigator";
 import Servicios from "./serviciosStackNavigator";
 import MisTurnos from "./misTurnosStackNavigator";
 import colors from "../../assets/colors";
@@ -41,6 +42,11 @@ export default function DrawerNavigator() {
         name="Precio"
         options={{ title: "PRECIOS" }}
         component={Precio}
+      />
+      <Drawer.Screen
+        name="Turnos"
+        options={{ title: "TURNOS" }}
+        component={Turnos}
       />
     </Drawer.Navigator>
   );

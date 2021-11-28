@@ -4,10 +4,10 @@ import CardTurno from "../../components/CardTurno/CardTurno.components";
 import Boton from "../../components/boton/boton.components";
 import ModalGeneral from "../../components/Modal/ModalGeneral.components";
 import AgregarTurno from "../../components/AgregarTurno/AgregarTurno.components";
-import styles from "./misTurnos.styles";
+import styles from "./Turnos.styles";
 import turnos from "../../../assets/turnos";
 
-export default function MisTurnos() {
+export default function Turnos() {
   const [openModal, setOpenModal] = useState(false);
 
   return (

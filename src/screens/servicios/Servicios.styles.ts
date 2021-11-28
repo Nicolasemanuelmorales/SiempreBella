@@ -26,5 +26,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 2,
   },
+  nombreService: {
+    maxWidth: "60%",
+    display: "flex",
+    alignSelf: "center",
+  },
+  price: {
+    display: "flex",
+    alignSelf: "center",
+  },
 });
 export default styles;

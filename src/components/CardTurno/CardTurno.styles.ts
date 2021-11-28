@@ -24,18 +24,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     color: colors.BLANCO,
+    textTransform: "uppercase",
   },
   Numero: {
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
     color: colors.BLANCO,
+    textTransform: "uppercase",
   },
   hora: {
     fontSize: 13,
     fontWeight: "bold",
     textAlign: "center",
     color: colors.BLANCO,
+    textTransform: "uppercase",
   },
   boxServicio: {
     backgroundColor: colors.BLANCO,

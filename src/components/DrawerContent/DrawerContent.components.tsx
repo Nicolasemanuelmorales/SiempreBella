@@ -90,7 +90,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
           label={<Text style={styles.inactive}>Turnos</Text>}
           onTouchEnd={() => {
             navigation.reset({
-              routes: [{ name: "Admin" }],
+              routes: [{ name: "Turnos" }],
             });
           }}
           style={styles.drawerStyle}

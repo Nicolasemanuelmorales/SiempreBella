@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 20,
   },
+  agregar: {
+    marginTop: 20,
+    width: "90%",
+    alignSelf: "center",
+  },
   botonera: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -38,6 +43,26 @@ const styles = StyleSheet.create({
   boxBoton: {
     flex: 1,
     marginRight: 10,
+  },
+  modalDelete: {
+    color: colors.PRINCIPAL,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  icono: {
+    marginRight: 10,
+    display: "flex",
+    alignSelf: "center",
+  },
+  nombreService: {
+    maxWidth: "60%",
+    display: "flex",
+    alignSelf: "center",
+  },
+  price: {
+    display: "flex",
+    alignSelf: "center",
   },
 });
 export default styles;

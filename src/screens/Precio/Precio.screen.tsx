@@ -7,6 +7,8 @@ import compareValues from "../../utils/sort";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import ModalGeneral from "../../components/Modal/ModalGeneral.components";
 import Boton from "../../components/boton/boton.components";
+import AgregarServicio from "../../components/AgregarServicio/AgregarServicio.components";
+import servicios from "../../../assets/servicios";
 
 interface IProps {
   navigation: any;
@@ -16,6 +18,7 @@ export default function Precio(props: IProps) {
   const { navigation } = props;
 
   const [eliminar, setEliminar] = useState<Servicio>({
+    id: 100,
     categoria: "Depilacion",
     nombre: "Pelvis completa",
     precio: "200",
@@ -23,116 +26,16 @@ export default function Precio(props: IProps) {
     tiempo: "20",
   });
   const [open, isOpen] = useState(false);
-
-  const array: Servicio[] = [
-    {
-      categoria: "Depilacion",
-      nombre: "Pelvis completa",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Depilacion",
-      nombre: "Tira",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Depilacion",
-      nombre: "Cavado",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Depilacion",
-      nombre: "Cavado profundo",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Depilacion",
-      nombre: "Media Pierna",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Depilacion",
-      nombre: "Pierna entera",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Depilacion",
-      nombre: "Pecho",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Depilacion",
-      nombre: "Brazos",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Depilacion",
-      nombre: "Glúteo",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Reiki",
-      nombre: "Clase",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Reiki",
-      nombre: "Curso",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Otros",
-      nombre: "Peeling corporal",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-    {
-      categoria: "Otros",
-      nombre: "Limpieza de cutis",
-      precio: "200",
-      descanso: "15",
-      tiempo: "20",
-    },
-  ];
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <ScrollView style={{ marginBottom: 20 }}>
       <ModalGeneral
         children={
-          <View>
+          <View style={{ alignItems: "center" }}>
             <Text>¿Esta seguro que desea elmiminar este servicio?</Text>
-            <Text
-              style={{
-                color: colors.PRINCIPAL,
-                textAlign: "center",
-                fontWeight: "bold",
-                fontSize: 16,
-              }}
-            >
-              {eliminar.nombre} de $ {eliminar.precio}
+            <Text style={styles.modalDelete}>
+              {eliminar.nombre} por ${eliminar.precio}
             </Text>
             <View style={styles.botonera}>
               <View style={styles.boxBoton}>
@@ -146,62 +49,53 @@ export default function Precio(props: IProps) {
         }
         open={open}
       />
+      <ModalGeneral
+        children={<AgregarServicio actionCancel={() => setOpenModal(false)} />}
+        open={openModal}
+      />
+      <View style={styles.agregar}>
+        <Boton
+          h={30}
+          title="Agregar Servicio"
+          action={() => setOpenModal(true)}
+        />
+      </View>
+
       <View style={{ paddingHorizontal: 20 }}>
-        {array
+        {servicios
           .sort(compareValues("categoria", "asc"))
           .map((item: Servicio, index: any) => {
             return (
               <View key={`titulo2w-${index}`}>
                 {index === 0 ? (
-                  <Text style={styles.title} key={`item-${index}`}>
-                    {item.categoria}
-                  </Text>
-                ) : array.sort(compareValues("categoria", "asc"))[index - 1]
+                  <Text style={styles.title}>{item.categoria}</Text>
+                ) : servicios.sort(compareValues("categoria", "asc"))[index - 1]
                     .categoria !== item.categoria ? (
-                  <Text style={styles.title} key={`titulo1-${index}`}>
-                    {item.categoria}
-                  </Text>
+                  <Text style={styles.title}>{item.categoria}</Text>
                 ) : null}
-                <View style={styles.boxService} key={`titulo2-${index}`}>
+                <View style={styles.boxService}>
                   <Pressable
                     onPress={() => {
                       setEliminar(item), isOpen(true);
                     }}
                   >
                     <Icon
-                      style={{
-                        marginRight: 10,
-                        display: "flex",
-                        alignSelf: "center",
-                      }}
+                      style={styles.icono}
                       name={"trash"}
                       size={16}
                       color={colors.PRINCIPAL}
                     />
                   </Pressable>
                   <Icon
-                    style={{
-                      marginRight: 10,
-                      display: "flex",
-                      alignSelf: "center",
-                    }}
+                    style={styles.icono}
                     name={"edit"}
                     size={16}
                     color={colors.PRINCIPAL}
                   />
-                  <Text
-                    key={`titulo3-${index}`}
-                    style={{
-                      maxWidth: "60%",
-                      display: "flex",
-                      alignSelf: "center",
-                    }}
-                  >
-                    {item.nombre}
-                  </Text>
-                  <View key={`linea-${index}`} style={styles.linea}></View>
-                  <View style={{ display: "flex", alignSelf: "center" }}>
-                    <Text key={`precio-${index}`}>$ {item.precio}</Text>
+                  <Text style={styles.nombreService}>{item.nombre}</Text>
+                  <View style={styles.linea}></View>
+                  <View style={styles.price}>
+                    <Text>$ {item.precio}</Text>
                   </View>
                 </View>
               </View>

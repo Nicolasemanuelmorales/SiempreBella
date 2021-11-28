@@ -1,4 +1,5 @@
 export default class Servicio {
+  id: number;
   categoria: string;
   nombre: string;
   precio: string;
@@ -6,6 +7,7 @@ export default class Servicio {
   tiempo: string;
 
   constructor(params: Servicio) {
+    this.id = params.id;
     this.categoria = params.categoria;
     this.nombre = params.nombre;
     this.precio = params.precio;
