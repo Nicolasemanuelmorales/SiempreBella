@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
 import Boton from "../../components/boton/boton.components";
 import ModalGeneral from "../../components/Modal/ModalGeneral.components";
 import AgregarTurno from "../../components/AgregarTurno/AgregarTurno.components";
 import styles from "./Turnos.styles";
-import turnos from "../../../assets/turnos";
+import turnos from "../../../assets/turnosMock";
 import colors from "../../../assets/colors";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Servicio from "../../models/Servicio";
+import Turno from "../../models/Turno";
+import turno from "../../../assets/turnoMock";
 
 export default function Turnos() {
   const [openModal, setOpenModal] = useState(false);
+  const [open, isOpen] = useState(false);
+  const [eliminar, setEliminar] = useState<Turno>(turno);
+  const [editar, setEditar] = useState(false);
 
   const sumarPrecio = (item: Servicio[]) => {
     let suma = 0;
@@ -30,11 +35,42 @@ export default function Turnos() {
   return (
     <ScrollView>
       <ModalGeneral
-        children={<AgregarTurno actionCancel={() => setOpenModal(false)} />}
+        children={
+          <AgregarTurno
+            data={editar ? turno : undefined}
+            actionCancel={() => setOpenModal(false)}
+          />
+        }
         open={openModal}
       />
+      <ModalGeneral
+        children={
+          <View style={{ alignItems: "center" }}>
+            <Text>¿Esta seguro que desea elmiminar este turno?</Text>
+            <Text style={styles.modalDelete}>
+              {eliminar.fecha} {eliminar.hora} por $
+              {sumarPrecio(eliminar.servicios)}
+            </Text>
+            <View style={styles.botonera}>
+              <View style={styles.boxBoton}>
+                <Boton title="Aceptar" action={() => isOpen(false)} />
+              </View>
+              <View style={styles.boxBoton}>
+                <Boton title="Cancelar" action={() => isOpen(false)} />
+              </View>
+            </View>
+          </View>
+        }
+        open={open}
+      />
       <View style={styles.agregar}>
-        <Boton h={30} title="Agregar turno" action={() => setOpenModal(true)} />
+        <Boton
+          h={30}
+          title="Agregar turno"
+          action={() => {
+            setOpenModal(true), setEditar(false);
+          }}
+        />
       </View>
 
       <View style={styles.filter}>
@@ -69,26 +105,39 @@ export default function Turnos() {
               <Text style={styles.diner}>${sumarPrecio(item.servicios)}</Text>
             </View>
             <View style={styles.name}>
-              {item.servicios.map((item, key) => {
+              {item.servicios.map((item2, key2) => {
                 return (
-                  <Text key={key} style={{ textAlign: "center" }}>
-                    {item.nombre}
+                  <Text key={key2} style={{ textAlign: "center" }}>
+                    {item2.nombre}
                   </Text>
                 );
               })}
             </View>
-            <Icon
-              style={styles.icono}
-              name={"edit"}
-              size={16}
-              color={colors.PRINCIPAL}
-            />
-            <Icon
-              style={styles.icono}
-              name={"trash"}
-              size={16}
-              color={colors.PRINCIPAL}
-            />
+            <Pressable
+              onTouchStart={() => {
+                setEditar(true), setOpenModal(true);
+              }}
+            >
+              <Icon
+                style={styles.icono}
+                name={"edit"}
+                size={16}
+                color={colors.PRINCIPAL}
+              />
+            </Pressable>
+
+            <Pressable
+              onTouchStart={() => {
+                setEliminar(item), isOpen(true);
+              }}
+            >
+              <Icon
+                style={styles.icono}
+                name={"trash"}
+                size={16}
+                color={colors.PRINCIPAL}
+              />
+            </Pressable>
           </View>
         );
       })}

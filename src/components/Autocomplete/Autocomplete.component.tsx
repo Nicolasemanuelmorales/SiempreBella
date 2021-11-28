@@ -13,6 +13,7 @@ interface IProps {
   multiple?: boolean;
   onylDrop?: boolean;
   deshablitar?: boolean;
+  valueDefault?: any;
 }
 
 function Autocomplete(props: IProps) {
@@ -23,6 +24,7 @@ function Autocomplete(props: IProps) {
     multiple = false,
     onylDrop = false,
     deshablitar = false,
+    valueDefault = undefined,
   } = props;
   const [valueSelected, setValueSelected] = useState("");
   const [valueSelectedMulltiple, setValueSelectedMulltiple] = useState<any[]>(
@@ -56,6 +58,13 @@ function Autocomplete(props: IProps) {
   };
 
   useEffect(onChangeValue, [valueSelected]);
+  useEffect(() => {
+    valueDefault !== undefined
+      ? (valueSeleccionado("valueDefault"),
+        setValueSelectedMulltiple(valueDefault),
+        !multiple ? setValueSelected(valueDefault) : null)
+      : null;
+  }, []);
 
   const deleteToArray = (text: any) => {
     setValueSelectedMulltiple(

@@ -4,7 +4,12 @@ import Usuario from "../src/models/Usuario";
 const turno: Turno[] = [
   {
     id: 1,
-    usuario: new Usuario({ id: 1, password: "pass", correo: "correo" }),
+    usuario: new Usuario({
+      id: 1,
+      password: "pass",
+      correo: "correo",
+      rol: "Cliente",
+    }),
     servicios: [
       {
         id: 1,
@@ -18,10 +23,16 @@ const turno: Turno[] = [
     hora: "12:30",
     fecha: "25-08-2021",
     metodoPago: "Mercado Pago",
+    estado: "Cancelado",
   },
   {
     id: 1,
-    usuario: new Usuario({ id: 1, password: "pass", correo: "correo" }),
+    usuario: new Usuario({
+      id: 1,
+      password: "pass",
+      correo: "correo",
+      rol: "Cliente",
+    }),
     servicios: [
       {
         id: 1,
@@ -51,10 +62,16 @@ const turno: Turno[] = [
     hora: "12:30",
     fecha: "25-08-2021",
     metodoPago: "Mercado Pago",
+    estado: "Cancelado",
   },
   {
     id: 1,
-    usuario: new Usuario({ id: 1, password: "pass", correo: "correo" }),
+    usuario: new Usuario({
+      id: 1,
+      password: "pass",
+      correo: "correo",
+      rol: "Cliente",
+    }),
     servicios: [
       {
         id: 1,
@@ -76,10 +93,16 @@ const turno: Turno[] = [
     hora: "12:30",
     fecha: "25-08-2021",
     metodoPago: "Mercado Pago",
+    estado: "Cancelado",
   },
   {
     id: 1,
-    usuario: new Usuario({ id: 1, password: "pass", correo: "correo" }),
+    usuario: new Usuario({
+      id: 1,
+      password: "pass",
+      correo: "correo",
+      rol: "Cliente",
+    }),
     servicios: [
       {
         id: 1,
@@ -109,6 +132,7 @@ const turno: Turno[] = [
     hora: "12:30",
     fecha: "25-08-2021",
     metodoPago: "Mercado Pago",
+    estado: "Cancelado",
   },
 ];
 

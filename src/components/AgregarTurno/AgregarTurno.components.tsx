@@ -4,13 +4,16 @@ import colors from "../../../assets/colors";
 import Boton from "../boton/boton.components";
 import Autocomplete from "../Autocomplete/Autocomplete.component";
 import styles from "./AgregarTurno.styles";
+import Turno from "../../models/Turno";
+import Servicio from "../../models/Servicio";
 
 interface IProps {
   actionCancel: () => void;
+  data?: Turno;
 }
 
 export default function AgregarTurno(props: IProps) {
-  const { actionCancel } = props;
+  const { actionCancel, data } = props;
   const [servicios, setServicios] = React.useState();
   const [fecha, setFecha] = React.useState("");
   const [horario, setHorario] = React.useState("");
@@ -32,9 +35,20 @@ export default function AgregarTurno(props: IProps) {
   };
   useEffect(() => updateHorario, [fecha]);
 
+  const OnlyName = (item: Servicio[]) => {
+    let array = [];
+    item.map((value) => {
+      array = [...array, value.nombre];
+    });
+    return array;
+  };
+
   return (
     <View style={{ width: "100%" }}>
-      <Text children={"AGREGAR TURNO"} style={styles.title} />
+      <Text
+        children={data ? "MODIFICAR TURNO" : "AGREGAR TURNO"}
+        style={styles.title}
+      />
 
       <View style={styles.atencion}>
         <Text style={{ color: colors.BLANCO }}>
@@ -61,6 +75,7 @@ export default function AgregarTurno(props: IProps) {
           "Bozo",
         ]}
         label="Servicios"
+        valueDefault={data ? OnlyName(data.servicios) : undefined}
       />
 
       <View style={styles.boxAutocomplete}>
@@ -79,6 +94,7 @@ export default function AgregarTurno(props: IProps) {
             "10:45",
           ]}
           label="Fecha"
+          valueDefault={data ? data.fecha : undefined}
         />
       </View>
 
@@ -96,6 +112,7 @@ export default function AgregarTurno(props: IProps) {
             "Martes 28/10",
             "Miercoles 29/10",
           ]}
+          valueDefault={data ? data.hora : undefined}
           label="Horario"
         />
       </View>
@@ -106,6 +123,7 @@ export default function AgregarTurno(props: IProps) {
           valueSeleccionado={setMetodoPago}
           data={["Mercado Pago", "Home Banking", "Efectivo"]}
           label="Método de pago"
+          valueDefault={data ? data.metodoPago : undefined}
         />
       </View>
 
@@ -114,7 +132,10 @@ export default function AgregarTurno(props: IProps) {
           <Boton title="Cancelar" action={actionCancel} />
         </View>
         <View style={styles.boxBoton}>
-          <Boton title="Agregar" action={() => GuardarTurno()} />
+          <Boton
+            title={data ? "Modificar" : "Agregar"}
+            action={() => GuardarTurno()}
+          />
         </View>
       </View>
     </View>

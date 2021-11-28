@@ -8,7 +8,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import ModalGeneral from "../../components/Modal/ModalGeneral.components";
 import Boton from "../../components/boton/boton.components";
 import AgregarServicio from "../../components/AgregarServicio/AgregarServicio.components";
-import servicios from "../../../assets/servicios";
+import servicios from "../../../assets/serviciosMock";
 
 interface IProps {
   navigation: any;
@@ -75,7 +75,7 @@ export default function Precio(props: IProps) {
                 ) : null}
                 <View style={styles.boxService}>
                   <Pressable
-                    onPress={() => {
+                    onTouchStart={() => {
                       setEliminar(item), isOpen(true);
                     }}
                   >

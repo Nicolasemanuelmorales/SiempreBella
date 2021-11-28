@@ -8,10 +8,11 @@ import styles from "./CardTurno.styles";
 interface IProps {
   navigation?: any;
   data: Turno;
+  action?: (value: any) => void;
 }
 
 export default function CardTurno(props: IProps) {
-  const { navigation, data } = props;
+  const { navigation, data, action } = props;
 
   const sumarPrecio = () => {
     let suma = 0;
@@ -52,7 +53,7 @@ export default function CardTurno(props: IProps) {
             size={13}
             h={25}
             title="Modificar"
-            action={() => console.log("")}
+            action={() => action(true)}
           />
         </View>
       </View>

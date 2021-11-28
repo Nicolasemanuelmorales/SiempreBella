@@ -76,7 +76,7 @@ const servicios: Servicio[] = [
   {
     id: 1,
     categoria: "Reiki",
-    nombre: "Clase",
+    nombre: "Clase de reiki",
     precio: "200",
     descanso: "15",
     tiempo: "20",
@@ -84,7 +84,7 @@ const servicios: Servicio[] = [
   {
     id: 1,
     categoria: "Reiki",
-    nombre: "Curso",
+    nombre: "Curso de reiki",
     precio: "200",
     descanso: "15",
     tiempo: "20",

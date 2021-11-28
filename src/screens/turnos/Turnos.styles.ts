@@ -23,6 +23,21 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     paddingVertical: 5,
   },
+  botonera: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 20,
+  },
+  boxBoton: {
+    flex: 1,
+    marginRight: 10,
+  },
+  modalDelete: {
+    color: colors.PRINCIPAL,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
   time: {
     flexDirection: "column",
     marginLeft: 20,
