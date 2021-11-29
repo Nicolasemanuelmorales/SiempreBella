@@ -200,6 +200,7 @@ function Autocomplete(props: IProps) {
                     style={{
                       marginTop: 20,
                       alignSelf: "center",
+                      width: "100%",
                     }}
                     onClose={() => deleteToArray(item)}
                   >
