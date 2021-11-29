@@ -4,15 +4,16 @@ import { Button, TextInput } from "react-native-paper";
 import colors from "../../../assets/colors";
 import Boton from "../../components/boton/boton.components";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import styles from "./Login.styles";
+import styles from "./Registrar.styles";
 
 interface IProps {
   navigation: any;
 }
 
-export default function Login(props: IProps) {
+export default function Registrar(props: IProps) {
   const { navigation } = props;
   const [hidePass, setHidePass] = useState(true);
+  const [hidePassRepeat, setHidePassRepeat] = useState(true);
 
   return (
     <ScrollView>
@@ -63,49 +64,42 @@ export default function Login(props: IProps) {
               }
             />
           </View>
+          <View style={styles.mb25}>
+            <TextInput
+              theme={{
+                colors: {
+                  primary: colors.PRINCIPAL,
+                  background: colors.BLANCO,
+                },
+              }}
+              mode="outlined"
+              label="Repetir contraseña"
+              secureTextEntry={hidePassRepeat}
+              right={
+                <TextInput.Icon
+                  onPress={() => setHidePassRepeat(!hidePassRepeat)}
+                  name={() => (
+                    <Icon
+                      name={hidePassRepeat ? "eye-slash" : "eye"}
+                      size={20}
+                      color={colors.PRINCIPAL}
+                    />
+                  )}
+                />
+              }
+            />
+          </View>
 
           <View style={styles.boxBoton}>
             <View style={styles.ingresar}>
               <Boton
-                title="Ingresar"
-                action={() => navigation.navigate("DrawerNavigator")}
+                title="Cancelar"
+                action={() => navigation.navigate("Login")}
               />
             </View>
             <View style={{ flex: 1 }}>
-              <Boton
-                title="Registrar"
-                action={() => navigation.navigate("Registrar")}
-              />
+              <Boton title="Registrar" action={() => console.log("")} />
             </View>
-          </View>
-          <View style={styles.mb}>
-            <Button
-              icon={() => (
-                <Icon name={"facebook"} size={20} color={colors.BLANCO} />
-              )}
-              style={styles.elev}
-              mode="contained"
-              color={colors.FACEBOOK}
-              onPress={() => navigation.navigate("DrawerNavigator")}
-            >
-              Ingresar con Facebook
-            </Button>
-          </View>
-          <View style={styles.mb}>
-            <Button
-              icon={() => (
-                <Image
-                  style={styles.imgG}
-                  source={require("../../../assets/images/gmail.jpg")}
-                />
-              )}
-              style={styles.elev}
-              mode="contained"
-              color={colors.GMAIL}
-              onPress={() => navigation.navigate("DrawerNavigator")}
-            >
-                Ingresar con Gmail  
-            </Button>
           </View>
         </View>
       </View>

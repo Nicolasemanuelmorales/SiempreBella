@@ -78,7 +78,7 @@ export default function Precio(props: IProps) {
                 ) : null}
                 <View style={styles.boxService}>
                   <Pressable
-                    onTouchStart={() => {
+                    onPress={() => {
                       setEliminar(item), isOpen(true);
                     }}
                   >
@@ -90,7 +90,7 @@ export default function Precio(props: IProps) {
                     />
                   </Pressable>
                   <Pressable
-                    onTouchStart={() => {
+                    onPress={() => {
                       setEditar(true), setOpenModal(true);
                     }}
                   >

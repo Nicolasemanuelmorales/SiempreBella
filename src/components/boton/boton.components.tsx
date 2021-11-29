@@ -15,12 +15,18 @@ export default function Boton(props: IProps) {
   return (
     <Button
       style={{ elevation: 0 }}
-      contentStyle={{ height: h ? h : "auto" }}
+      contentStyle={{ height: h ? h : 37 }}
       mode="contained"
       color={colors.PRINCIPAL}
-      labelStyle={{ fontSize: size > 0 ? size : 14 }}
+      labelStyle={{
+        fontSize: size > 0 ? size : 14,
+        marginTop: 0,
+        marginBottom: 0,
+        marginLeft: 6,
+        marginRight: 6,
+      }}
       children={title}
-      onTouchStart={action}
+      onPress={action}
     />
   );
 }

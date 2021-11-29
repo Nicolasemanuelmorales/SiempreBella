@@ -62,12 +62,11 @@ const styles = StyleSheet.create({
     minHeight: 35,
   },
   cancel: {
-    paddingBottom: 4,
     textAlign: "center",
     fontSize: 14,
+    borderWidth: 0,
     fontWeight: "bold",
     color: colors.PRINCIPAL,
-    textDecorationLine: "underline",
   },
   pagoL: {
     fontSize: 14,
