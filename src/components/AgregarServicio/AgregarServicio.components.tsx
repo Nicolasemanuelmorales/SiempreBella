@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View } from "react-native";
 import Boton from "../boton/boton.components";
 import styles from "./AgregarServicio.styles";
 import { TextInput } from "react-native-paper";
+import Servicio from "../../models/Servicio";
 
 interface IProps {
   actionCancel: () => void;
+  data?: Servicio;
+  edit?: boolean;
 }
 
 export default function AgregarServicio(props: IProps) {
-  const { actionCancel } = props;
+  const { actionCancel, data = undefined, edit = false } = props;
   const [categoria, setCategoria] = React.useState("");
   const [nombre, setNombre] = React.useState("");
   const [precio, setPrecio] = React.useState("");
@@ -20,9 +23,22 @@ export default function AgregarServicio(props: IProps) {
     console.log("");
   };
 
+  useEffect(() => {
+    edit
+      ? (setCategoria(data.categoria),
+        setNombre(data.nombre),
+        setPrecio(data.precio),
+        setTiempo(data.tiempo),
+        setDescanso(data.descanso))
+      : null;
+  }, [edit]);
+
   return (
     <View>
-      <Text children={"AGREGAR SERVICIO"} style={styles.title} />
+      <Text
+        children={edit ? "MODIFICAR SERVICIO" : "AGREGAR SERVICIO"}
+        style={styles.title}
+      />
 
       <TextInput
         style={styles.boxAutocomplete}
@@ -68,7 +84,10 @@ export default function AgregarServicio(props: IProps) {
           <Boton title="Cancelar" action={actionCancel} />
         </View>
         <View style={styles.boxBoton}>
-          <Boton title="Guardar" action={GuardarServicio} />
+          <Boton
+            title={edit ? "Modificar" : "Guardar"}
+            action={GuardarServicio}
+          />
         </View>
       </View>
     </View>

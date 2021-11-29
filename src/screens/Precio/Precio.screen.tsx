@@ -9,6 +9,7 @@ import ModalGeneral from "../../components/Modal/ModalGeneral.components";
 import Boton from "../../components/boton/boton.components";
 import AgregarServicio from "../../components/AgregarServicio/AgregarServicio.components";
 import servicios from "../../../assets/serviciosMock";
+import servicio from "../../../assets/servicioMock";
 
 interface IProps {
   navigation: any;
@@ -17,16 +18,10 @@ interface IProps {
 export default function Precio(props: IProps) {
   const { navigation } = props;
 
-  const [eliminar, setEliminar] = useState<Servicio>({
-    id: 100,
-    categoria: "Depilacion",
-    nombre: "Pelvis completa",
-    precio: "200",
-    descanso: "15",
-    tiempo: "20",
-  });
+  const [eliminar, setEliminar] = useState<Servicio>(servicio);
   const [open, isOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [editar, setEditar] = useState(false);
 
   return (
     <ScrollView style={{ marginBottom: 20 }}>
@@ -50,14 +45,22 @@ export default function Precio(props: IProps) {
         open={open}
       />
       <ModalGeneral
-        children={<AgregarServicio actionCancel={() => setOpenModal(false)} />}
+        children={
+          <AgregarServicio
+            data={editar ? servicio : undefined}
+            edit={editar}
+            actionCancel={() => setOpenModal(false)}
+          />
+        }
         open={openModal}
       />
       <View style={styles.agregar}>
         <Boton
           h={30}
           title="Agregar Servicio"
-          action={() => setOpenModal(true)}
+          action={() => {
+            setOpenModal(true), setEditar(false);
+          }}
         />
       </View>
 
@@ -86,12 +89,19 @@ export default function Precio(props: IProps) {
                       color={colors.PRINCIPAL}
                     />
                   </Pressable>
-                  <Icon
-                    style={styles.icono}
-                    name={"edit"}
-                    size={16}
-                    color={colors.PRINCIPAL}
-                  />
+                  <Pressable
+                    onTouchStart={() => {
+                      setEditar(true), setOpenModal(true);
+                    }}
+                  >
+                    <Icon
+                      style={styles.icono}
+                      name={"edit"}
+                      size={16}
+                      color={colors.PRINCIPAL}
+                    />
+                  </Pressable>
+
                   <Text style={styles.nombreService}>{item.nombre}</Text>
                   <View style={styles.linea}></View>
                   <View style={styles.price}>
