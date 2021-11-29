@@ -114,7 +114,7 @@ export default function Turnos() {
               })}
             </View>
             <Pressable
-              onTouchStart={() => {
+              onPress={() => {
                 setEditar(true), setOpenModal(true);
               }}
             >
@@ -127,7 +127,7 @@ export default function Turnos() {
             </Pressable>
 
             <Pressable
-              onTouchStart={() => {
+              onPress={() => {
                 setEliminar(item), isOpen(true);
               }}
             >

@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { Button } from "react-native-paper";
 import colors from "../../../assets/colors";
 import Turno from "../../models/Turno";
 import Boton from "../boton/boton.components";
@@ -9,10 +10,11 @@ interface IProps {
   navigation?: any;
   data: Turno;
   action?: (value: any) => void;
+  actionCancel: (value: any) => void;
 }
 
 export default function CardTurno(props: IProps) {
-  const { navigation, data, action } = props;
+  const { navigation, data, action, actionCancel } = props;
 
   const sumarPrecio = () => {
     let suma = 0;
@@ -48,7 +50,24 @@ export default function CardTurno(props: IProps) {
           </View>
         </View>
         <View style={styles.boton}>
-          <Text style={styles.cancel}>CANCELAR</Text>
+          <Button
+            mode="outlined"
+            color={colors.PRINCIPAL}
+            style={styles.cancel}
+            contentStyle={{ height: 21 }}
+            labelStyle={{
+              marginTop: 0,
+              marginBottom: 0,
+              marginLeft: 4,
+              marginRight: 4,
+              textDecorationLine: "underline",
+            }}
+            onPress={() => {
+              actionCancel(data);
+            }}
+          >
+            CANCELAR
+          </Button>
           <Boton
             size={13}
             h={25}

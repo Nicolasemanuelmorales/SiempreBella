@@ -2,7 +2,7 @@ import Turno from "../src/models/Turno";
 import Usuario from "../src/models/Usuario";
 
 const turno: Turno = {
-  id: 1,
+  id: 100,
   usuario: new Usuario({
     id: 1,
     password: "pass",
