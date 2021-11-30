@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import loaderAction from "../../redux/actions/LoaderAction";
 import Loader from "../../components/Loader/Loader.components";
 import { IRootState } from "../../redux/reducers/rootReducer";
+import firebase from "firebase/compat/app";
+import { setPersistence, inMemoryPersistence } from "firebase/auth";
 
 interface IProps {
   navigation: any;
@@ -45,15 +47,21 @@ export default function Login(props: IProps) {
   };
 
   const retrieveData = async () => {
-    dispatch(loaderAction(true));
+    // console.log(auth.currentUser);
 
-    await AsyncStorage.getItem("log")
-      .then((item) => {
-        item ? navigation.navigate("DrawerNavigator") : null;
-      })
-      .finally(() => {
-        dispatch(loaderAction(false));
-      });
+    // dispatch(loaderAction(true));
+
+    // await AsyncStorage.getItem("log")
+    //   .then((item) => {navigation.navigate("DrawerNavigator")})
+    //   .finally(() => {
+    //     dispatch(loaderAction(false));
+    //   });
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigation.navigate("DrawerNavigator");
+      }
+    });
   };
 
   useEffect(() => {
@@ -61,7 +69,6 @@ export default function Login(props: IProps) {
   }, []);
 
   const login = () => {
-    dispatch(loaderAction(true));
     setPassError("");
 
     if (email === "") {
@@ -75,6 +82,8 @@ export default function Login(props: IProps) {
       setPassError("Campo vacio.");
     }
     if (emailError === "") {
+      dispatch(loaderAction(true));
+
       auth
         .signInWithEmailAndPassword(email, pass)
         .then(() => {
