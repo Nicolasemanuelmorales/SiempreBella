@@ -27,12 +27,7 @@ const styles = StyleSheet.create({
     width: "90%",
     alignSelf: "center",
   },
-  mb: {
-    marginBottom: 20,
-  },
-  mb25: {
-    marginBottom: 25,
-  },
+
   boxBoton: {
     marginBottom: 20,
     flexDirection: "row",
