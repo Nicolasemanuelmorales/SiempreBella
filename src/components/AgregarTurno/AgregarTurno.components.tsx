@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
 import colors from "../../../assets/colors";
-import Boton from "../boton/boton.components";
+import Boton from "../Boton/Boton.components";
 import Autocomplete from "../Autocomplete/Autocomplete.component";
 import styles from "./AgregarTurno.styles";
 import Turno from "../../models/Turno";

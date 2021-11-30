@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
-import Boton from "../../components/boton/boton.components";
+import Boton from "../../components/Boton/Boton.components";
 import ModalGeneral from "../../components/Modal/ModalGeneral.components";
 import AgregarTurno from "../../components/AgregarTurno/AgregarTurno.components";
 import styles from "./Turnos.styles";

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
-import Boton from "../boton/boton.components";
+import Boton from "../Boton/Boton.components";
 import styles from "./AgregarServicio.styles";
 import { TextInput } from "react-native-paper";
 import Servicio from "../../models/Servicio";

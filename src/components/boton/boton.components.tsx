@@ -26,7 +26,7 @@ export default function Boton(props: IProps) {
         marginRight: 6,
       }}
       children={title}
-      onPress={action}
+      onTouchStart={action}
     />
   );
 }

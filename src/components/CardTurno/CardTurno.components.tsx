@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import { Button } from "react-native-paper";
 import colors from "../../../assets/colors";
 import Turno from "../../models/Turno";
-import Boton from "../boton/boton.components";
+import Boton from "../Boton/Boton.components";
 import styles from "./CardTurno.styles";
 
 interface IProps {
@@ -68,11 +68,19 @@ export default function CardTurno(props: IProps) {
           >
             CANCELAR
           </Button>
-          <Boton
-            size={13}
-            h={25}
-            title="Modificar"
-            action={() => action(true)}
+          <Button
+            style={{ elevation: 0 }}
+            contentStyle={{ height: 21 }}
+            mode="contained"
+            color={colors.PRINCIPAL}
+            labelStyle={{
+              marginTop: 0,
+              marginBottom: 0,
+              marginLeft: 6,
+              marginRight: 6,
+            }}
+            children={"Modificar"}
+            onPress={() => action(true)}
           />
         </View>
       </View>

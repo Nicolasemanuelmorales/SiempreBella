@@ -30,6 +30,12 @@ const styles = StyleSheet.create({
   mb: {
     marginBottom: 20,
   },
+  labelS: {
+    marginTop: 0,
+    marginBottom: 0,
+    marginLeft: 6,
+    marginRight: 6,
+  },
   mb25: {
     marginBottom: 25,
   },

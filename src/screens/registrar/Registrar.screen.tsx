@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import { HelperText, TextInput } from "react-native-paper";
 import colors from "../../../assets/colors";
-import Boton from "../../components/boton/boton.components";
+import Boton from "../../components/Boton/Boton.components";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import styles from "./Registrar.styles";
 import { auth } from "../../../firebase";
@@ -22,6 +22,14 @@ export default function Registrar(props: IProps) {
   const [passError, setPassError] = useState("");
   const [secondPassError, setSecondPassError] = useState("");
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
   const registrar = () => {
     setEmailError("");
     setPassError("");
@@ -31,14 +39,28 @@ export default function Registrar(props: IProps) {
     }
     if (email === "") {
       setEmailError("Campo vacio.");
+    } else if (!validateEmail(email)) {
+      setEmailError("Email Incorrecto.");
     }
     if (pass === "") {
       setPassError("Campo vacio.");
+    } else if (pass.length < 8) {
+      setPassError("Minimo 8 caracteres.");
     }
     if (secondPass === "") {
       setSecondPassError("Campo vacio.");
     }
-    if (emailError === "" && passError === "" && secondPassError === "") {
+    if (
+      emailError === "" &&
+      passError === "" &&
+      secondPassError === "" &&
+      email !== "" &&
+      pass !== "" &&
+      secondPass !== ""
+    ) {
+      console.log(emailError);
+      console.log(passError);
+      console.log(secondPassError);
       auth
         .createUserWithEmailAndPassword(email, pass)
         .then(() => {
