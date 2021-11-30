@@ -58,9 +58,6 @@ export default function Registrar(props: IProps) {
       pass !== "" &&
       secondPass !== ""
     ) {
-      console.log(emailError);
-      console.log(passError);
-      console.log(secondPassError);
       auth
         .createUserWithEmailAndPassword(email, pass)
         .then(() => {

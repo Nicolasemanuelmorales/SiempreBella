@@ -1,16 +1,19 @@
 import React from "react";
 import { Drawer } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, AsyncStorage } from "react-native";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import styles from "./DrawerContent.styles";
 import colors from "../../../assets/colors";
-
+import { auth } from "../../../firebase";
 interface IProps {
   navigation: any;
 }
 
 function DrawerNavigatorContent({ navigation }: IProps) {
+  const storeData = async () => {
+    await AsyncStorage.setItem("log", "out");
+  };
   return (
     <>
       <DrawerContentScrollView style={{ marginTop: -23 }} {...navigation}>
@@ -160,9 +163,12 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         <Drawer.Item
           label={<Text style={styles.inactive}>Cerrar Sesión</Text>}
           onTouchEnd={() => {
-            navigation.reset({
-              routes: [{ name: "Login" }],
-            });
+            auth.signOut().then(() => {
+              navigation.reset({
+                routes: [{ name: "Login" }],
+              });
+            }),
+              storeData();
           }}
           style={styles.drawerStyle}
           icon={() => (

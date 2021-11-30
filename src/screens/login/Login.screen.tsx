@@ -1,13 +1,22 @@
-import React, { useState } from "react";
-import { Image, Pressable, ScrollView, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  AsyncStorage,
+  Image,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { Button, HelperText, TextInput } from "react-native-paper";
 import colors from "../../../assets/colors";
 import Boton from "../../components/Boton/Boton.components";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import styles from "./Login.styles";
 import { auth } from "../../../firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import loaderAction from "../../redux/actions/LoaderAction";
+import Loader from "../../components/Loader/Loader.components";
+import { IRootState } from "../../redux/reducers/rootReducer";
 
 interface IProps {
   navigation: any;
@@ -21,6 +30,7 @@ export default function Login(props: IProps) {
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
   const dispatch = useDispatch();
+  const loader = useSelector((state: IRootState) => state.loader.value);
 
   const validateEmail = (email) => {
     return String(email)
@@ -29,6 +39,26 @@ export default function Login(props: IProps) {
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
   };
+
+  const storeData = async () => {
+    await AsyncStorage.setItem("log", "in");
+  };
+
+  const retrieveData = async () => {
+    dispatch(loaderAction(true));
+
+    await AsyncStorage.getItem("log")
+      .then((item) => {
+        item ? navigation.navigate("DrawerNavigator") : null;
+      })
+      .finally(() => {
+        dispatch(loaderAction(false));
+      });
+  };
+
+  useEffect(() => {
+    retrieveData();
+  }, []);
 
   const login = () => {
     dispatch(loaderAction(true));
@@ -48,7 +78,7 @@ export default function Login(props: IProps) {
       auth
         .signInWithEmailAndPassword(email, pass)
         .then(() => {
-          navigation.navigate("DrawerNavigator");
+          storeData(), navigation.navigate("DrawerNavigator");
         })
         .catch((error) => {
           if (error.code === "auth/invalid-email" && pass === "") {
@@ -70,124 +100,127 @@ export default function Login(props: IProps) {
   };
 
   return (
-    <ScrollView>
-      <View style={styles.boxGeneral}>
-        <View style={styles.minH}>
-          <Image
-            style={styles.img}
-            source={require("../../../assets/images/flor.png")}
-          />
-          <Text style={styles.title}>Siempre Bella</Text>
-        </View>
-        <View style={styles.boxGeneral2}>
-          <TextInput
-            theme={{
-              colors: {
-                primary: colors.PRINCIPAL,
-                background: colors.BLANCO,
-                error: "red",
-              },
-            }}
-            error={emailError === "" ? false : true}
-            value={email}
-            onChangeText={setEmail}
-            mode="outlined"
-            label="Email"
-          />
-          <HelperText
-            style={{
-              color: "red",
-            }}
-            type="error"
-            visible={emailError === "" ? false : true}
-          >
-            {emailError}
-          </HelperText>
+    <>
+      <ScrollView>
+        <View style={styles.boxGeneral}>
+          <View style={styles.minH}>
+            <Image
+              style={styles.img}
+              source={require("../../../assets/images/flor.png")}
+            />
+            <Text style={styles.title}>Siempre Bella</Text>
+          </View>
+          <View style={styles.boxGeneral2}>
+            <TextInput
+              theme={{
+                colors: {
+                  primary: colors.PRINCIPAL,
+                  background: colors.BLANCO,
+                  error: "red",
+                },
+              }}
+              error={emailError === "" ? false : true}
+              value={email}
+              onChangeText={setEmail}
+              mode="outlined"
+              label="Email"
+            />
+            <HelperText
+              style={{
+                color: "red",
+              }}
+              type="error"
+              visible={emailError === "" ? false : true}
+            >
+              {emailError}
+            </HelperText>
 
-          <TextInput
-            theme={{
-              colors: {
-                primary: colors.PRINCIPAL,
-                background: colors.BLANCO,
-                error: "red",
-              },
-            }}
-            mode="outlined"
-            label="Contraseña"
-            value={pass}
-            error={passError === "" ? false : true}
-            onChangeText={setPass}
-            secureTextEntry={hidePass}
-            right={
-              <TextInput.Icon
-                name={() => (
-                  <Pressable onTouchStart={() => setHidePass(!hidePass)}>
-                    <Icon
-                      name={hidePass ? "eye-slash" : "eye"}
-                      size={20}
-                      color={colors.PRINCIPAL}
-                    />
-                  </Pressable>
-                )}
-              />
-            }
-          />
-          <HelperText
-            style={{
-              color: "red",
-            }}
-            type="error"
-            visible={passError === "" ? false : true}
-          >
-            {passError}
-          </HelperText>
-          <View style={styles.boxBoton}>
-            <View style={styles.ingresar}>
-              <Boton title="Ingresar" action={login} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Button
-                style={{ elevation: 0 }}
-                contentStyle={{ height: 37 }}
-                mode="contained"
-                color={colors.PRINCIPAL}
-                labelStyle={styles.labelS}
-                children={"Registrar"}
-                onPress={() => navigation.navigate("Registrar")}
-              />
-            </View>
-          </View>
-          <View style={styles.mb}>
-            <Button
-              icon={() => (
-                <Icon name={"facebook"} size={20} color={colors.BLANCO} />
-              )}
-              style={styles.elev}
-              mode="contained"
-              color={colors.FACEBOOK}
-              onPress={() => navigation.navigate("DrawerNavigator")}
-            >
-              Ingresar con Facebook
-            </Button>
-          </View>
-          <View style={styles.mb}>
-            <Button
-              icon={() => (
-                <Image
-                  style={styles.imgG}
-                  source={require("../../../assets/images/gmail.jpg")}
+            <TextInput
+              theme={{
+                colors: {
+                  primary: colors.PRINCIPAL,
+                  background: colors.BLANCO,
+                  error: "red",
+                },
+              }}
+              mode="outlined"
+              label="Contraseña"
+              value={pass}
+              error={passError === "" ? false : true}
+              onChangeText={setPass}
+              secureTextEntry={hidePass}
+              right={
+                <TextInput.Icon
+                  name={() => (
+                    <Pressable onTouchStart={() => setHidePass(!hidePass)}>
+                      <Icon
+                        name={hidePass ? "eye-slash" : "eye"}
+                        size={20}
+                        color={colors.PRINCIPAL}
+                      />
+                    </Pressable>
+                  )}
                 />
-              )}
-              style={styles.elev}
-              mode="contained"
-              color={colors.GMAIL}
-              onPress={() => navigation.navigate("DrawerNavigator")}
+              }
+            />
+            <HelperText
+              style={{
+                color: "red",
+              }}
+              type="error"
+              visible={passError === "" ? false : true}
             >
-                Ingresar con Gmail  
-            </Button>
+              {passError}
+            </HelperText>
+            <View style={styles.boxBoton}>
+              <View style={styles.ingresar}>
+                <Boton title="Ingresar" action={login} />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Button
+                  style={{ elevation: 0 }}
+                  contentStyle={{ height: 37 }}
+                  mode="contained"
+                  color={colors.PRINCIPAL}
+                  labelStyle={styles.labelS}
+                  children={"Registrar"}
+                  onPress={() => navigation.navigate("Registrar")}
+                />
+              </View>
+            </View>
+            <View style={styles.mb}>
+              <Button
+                icon={() => (
+                  <Icon name={"facebook"} size={20} color={colors.BLANCO} />
+                )}
+                style={styles.elev}
+                mode="contained"
+                color={colors.FACEBOOK}
+                onPress={() => navigation.navigate("DrawerNavigator")}
+              >
+                Ingresar con Facebook
+              </Button>
+            </View>
+            <View style={styles.mb}>
+              <Button
+                icon={() => (
+                  <Image
+                    style={styles.imgG}
+                    source={require("../../../assets/images/gmail.jpg")}
+                  />
+                )}
+                style={styles.elev}
+                mode="contained"
+                color={colors.GMAIL}
+                onPress={() => navigation.navigate("DrawerNavigator")}
+              >
+                  Ingresar con Gmail  
+              </Button>
+            </View>
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <Loader open={loader} />
+    </>
   );
 }
