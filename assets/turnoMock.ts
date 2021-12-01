@@ -7,7 +7,6 @@ const turno: Turno = {
     id: 1,
     password: "pass",
     correo: "correo",
-    rol: "Cliente",
   }),
   servicios: [
     {
