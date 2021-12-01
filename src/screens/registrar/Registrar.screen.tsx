@@ -5,7 +5,10 @@ import colors from "../../../assets/colors";
 import Boton from "../../components/Boton/Boton.components";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import styles from "./Registrar.styles";
-import { auth } from "../../../firebase";
+import auth from "../../../firebase";
+import { createUserWithEmailAndPassword } from "@firebase/auth";
+import { useDispatch } from "react-redux";
+import loaderAction from "../../redux/actions/LoaderAction";
 
 interface IProps {
   navigation: any;
@@ -21,6 +24,7 @@ export default function Registrar(props: IProps) {
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
   const [secondPassError, setSecondPassError] = useState("");
+  const dispatch = useDispatch();
 
   const validateEmail = (email) => {
     return String(email)
@@ -58,10 +62,11 @@ export default function Registrar(props: IProps) {
       pass !== "" &&
       secondPass !== ""
     ) {
-      auth
-        .createUserWithEmailAndPassword(email, pass)
-        .then(() => {
+      dispatch(loaderAction(true));
+      createUserWithEmailAndPassword(auth, email, pass)
+        .then((user) => {
           navigation.navigate("Login");
+          dispatch(loaderAction(false));
         })
         .catch((error) => {
           if (error.code === "auth/invalid-email") {
