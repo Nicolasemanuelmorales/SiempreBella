@@ -42,7 +42,6 @@ export default function Login(props: IProps) {
   const retrieveData = async () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
         navigation.navigate("DrawerNavigator");
       }
     });
@@ -93,7 +92,7 @@ export default function Login(props: IProps) {
 
   return (
     <>
-      <ScrollView>
+      <ScrollView style={{ paddingTop: "10%" }}>
         <View style={styles.boxGeneral}>
           <View style={styles.minH}>
             <Image
@@ -148,7 +147,7 @@ export default function Login(props: IProps) {
                       <Icon
                         name={hidePass ? "eye-slash" : "eye"}
                         size={20}
-                        color={colors.PRINCIPAL}
+                        color={"#757575"}
                       />
                     </Pressable>
                   )}
@@ -187,6 +186,13 @@ export default function Login(props: IProps) {
                 )}
                 style={styles.elev}
                 mode="contained"
+                contentStyle={{
+                  justifyContent: "flex-start",
+                  display: "flex",
+                  alignSelf: "center",
+                  paddingLeft: 20,
+                }}
+                labelStyle={{ marginLeft: 25 }}
                 color={colors.FACEBOOK}
                 onPress={() => console.log("")}
               >
@@ -203,10 +209,15 @@ export default function Login(props: IProps) {
                 )}
                 style={styles.elev}
                 mode="contained"
+                contentStyle={{
+                  justifyContent: "flex-start",
+                  alignSelf: "center",
+                  display: "flex",
+                }}
                 color={colors.GMAIL}
                 onPress={() => console.log("")}
               >
-                  Ingresar con Gmail  
+                Ingresar con Gmail  
               </Button>
             </View>
           </View>

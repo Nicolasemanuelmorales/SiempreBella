@@ -78,7 +78,7 @@ export default function Registrar(props: IProps) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{ paddingTop: "10%" }}>
       <View style={styles.boxGeneral}>
         <View style={styles.minH}>
           <Image
@@ -133,7 +133,7 @@ export default function Registrar(props: IProps) {
                   <Icon
                     name={hidePass ? "eye-slash" : "eye"}
                     size={20}
-                    color={colors.PRINCIPAL}
+                    color={"#757575"}
                   />
                 )}
               />
@@ -169,7 +169,7 @@ export default function Registrar(props: IProps) {
                   <Icon
                     name={hidePassRepeat ? "eye-slash" : "eye"}
                     size={20}
-                    color={colors.PRINCIPAL}
+                    color={"#757575"}
                   />
                 )}
               />

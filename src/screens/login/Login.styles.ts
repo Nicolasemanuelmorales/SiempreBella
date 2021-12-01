@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   imgG: {
     width: 30,
     height: 30,
+    marginLeft: 0,
   },
 });
 export default styles;
