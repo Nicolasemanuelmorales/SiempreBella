@@ -5,8 +5,9 @@ import { View, Text, Image, AsyncStorage } from "react-native";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import styles from "./DrawerContent.styles";
 import colors from "../../../assets/colors";
-import { auth } from "../../../firebase";
+import auth from "../../../firebase";
 import * as Facebook from "expo-facebook";
+import { signOut } from "firebase/auth";
 
 interface IProps {
   navigation: any;
@@ -15,7 +16,7 @@ interface IProps {
 function DrawerNavigatorContent({ navigation }: IProps) {
   const storeData = async () => {
     await AsyncStorage.setItem("log", "out");
-    auth.signOut().then(() => {
+    signOut(auth).then(() => {
       navigation.reset({
         routes: [{ name: "Login" }],
       });

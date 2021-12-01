@@ -12,14 +12,11 @@ import colors from "../../../assets/colors";
 import Boton from "../../components/Boton/Boton.components";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import styles from "./Login.styles";
-import { auth } from "../../../firebase";
-import { useDispatch, useSelector } from "react-redux";
+import auth from "../../../firebase";
+import { useDispatch } from "react-redux";
 import loaderAction from "../../redux/actions/LoaderAction";
 import Loader from "../../components/Loader/Loader.components";
-import { IRootState } from "../../redux/reducers/rootReducer";
-import firebase from "firebase/compat/app";
-import { setPersistence, inMemoryPersistence } from "firebase/auth";
-import * as Facebook from "expo-facebook";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 interface IProps {
   navigation: any;
@@ -33,7 +30,6 @@ export default function Login(props: IProps) {
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
   const dispatch = useDispatch();
-  const loader = useSelector((state: IRootState) => state.loader.value);
 
   const validateEmail = (email) => {
     return String(email)
@@ -43,57 +39,18 @@ export default function Login(props: IProps) {
       );
   };
 
-  // const facebookLogIn = async () => {
-  //   const { type, token, expires, permissions, declinedPermissions } =
-  //     await Facebook.logInWithReadPermissionsAsync({
-  //       permissions: ['public_profile', 'email']
-  //     });
-
-  // };
-
-  const storeData = async () => {
-    await AsyncStorage.setItem("log", "in");
-  };
-
   const retrieveData = async () => {
-    dispatch(loaderAction(true));
-    await AsyncStorage.getItem("log")
-      .then((item) => {
-        item === "in" ? navigation.navigate("DrawerNavigator") : null;
-      })
-      .finally(() => {
-        dispatch(loaderAction(false));
-      });
-    // auth.onAuthStateChanged((user) => {
-    //   if (user) {
-    //     navigation.navigate("DrawerNavigator");
-    //   }
-    // });
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user);
+        navigation.navigate("DrawerNavigator");
+      }
+    });
   };
-  const handleAuth = async () => {
-    try {
-      dispatch(loaderAction(true));
-      await Facebook.initializeAsync({ appId: "998067264257190" });
-      const { token } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ["public_profile", "email"],
-      });
-      const credential = firebase.auth.FacebookAuthProvider.credential(token);
-      auth
-        .signInWithCredential(credential)
-        .then((user) => {
-          navigation.navigate("DrawerNavigator");
-        })
-        .catch((error) => {
-          console.log("Error occurred ", error);
-        })
-        .finally(() => {
-          storeData();
-          dispatch(loaderAction(false));
-        });
-    } catch ({ message }) {
-      dispatch(loaderAction(false));
-    }
-  };
+
+  useEffect(() => {
+    retrieveData();
+  }, []);
   useEffect(() => {
     retrieveData();
   }, []);
@@ -114,10 +71,9 @@ export default function Login(props: IProps) {
     if (emailError === "") {
       dispatch(loaderAction(true));
 
-      auth
-        .signInWithEmailAndPassword(email, pass)
+      signInWithEmailAndPassword(auth, email, pass)
         .then(() => {
-          storeData(), navigation.navigate("DrawerNavigator");
+          navigation.navigate("DrawerNavigator");
         })
         .catch((error) => {
           if (error.code === "auth/invalid-email" && pass === "") {
@@ -235,7 +191,7 @@ export default function Login(props: IProps) {
                 style={styles.elev}
                 mode="contained"
                 color={colors.FACEBOOK}
-                onPress={() => handleAuth()}
+                onPress={() => console.log("")}
               >
                 Ingresar con Facebook
               </Button>
@@ -251,7 +207,7 @@ export default function Login(props: IProps) {
                 style={styles.elev}
                 mode="contained"
                 color={colors.GMAIL}
-                onPress={() => navigation.navigate("DrawerNavigator")}
+                onPress={() => console.log("")}
               >
                   Ingresar con Gmail  
               </Button>
@@ -259,7 +215,6 @@ export default function Login(props: IProps) {
           </View>
         </View>
       </ScrollView>
-      <Loader open={loader} />
     </>
   );
 }
