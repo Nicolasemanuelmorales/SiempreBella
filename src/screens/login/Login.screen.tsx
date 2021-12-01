@@ -19,6 +19,7 @@ import Loader from "../../components/Loader/Loader.components";
 import { IRootState } from "../../redux/reducers/rootReducer";
 import firebase from "firebase/compat/app";
 import { setPersistence, inMemoryPersistence } from "firebase/auth";
+import * as Facebook from "expo-facebook";
 
 interface IProps {
   navigation: any;
@@ -42,28 +43,57 @@ export default function Login(props: IProps) {
       );
   };
 
+  // const facebookLogIn = async () => {
+  //   const { type, token, expires, permissions, declinedPermissions } =
+  //     await Facebook.logInWithReadPermissionsAsync({
+  //       permissions: ['public_profile', 'email']
+  //     });
+
+  // };
+
   const storeData = async () => {
     await AsyncStorage.setItem("log", "in");
   };
 
   const retrieveData = async () => {
-    // console.log(auth.currentUser);
-
-    // dispatch(loaderAction(true));
-
-    // await AsyncStorage.getItem("log")
-    //   .then((item) => {navigation.navigate("DrawerNavigator")})
-    //   .finally(() => {
-    //     dispatch(loaderAction(false));
-    //   });
-
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.navigate("DrawerNavigator");
-      }
-    });
+    dispatch(loaderAction(true));
+    await AsyncStorage.getItem("log")
+      .then((item) => {
+        item === "in" ? navigation.navigate("DrawerNavigator") : null;
+      })
+      .finally(() => {
+        dispatch(loaderAction(false));
+      });
+    // auth.onAuthStateChanged((user) => {
+    //   if (user) {
+    //     navigation.navigate("DrawerNavigator");
+    //   }
+    // });
   };
-
+  const handleAuth = async () => {
+    try {
+      dispatch(loaderAction(true));
+      await Facebook.initializeAsync({ appId: "998067264257190" });
+      const { token } = await Facebook.logInWithReadPermissionsAsync({
+        permissions: ["public_profile", "email"],
+      });
+      const credential = firebase.auth.FacebookAuthProvider.credential(token);
+      auth
+        .signInWithCredential(credential)
+        .then((user) => {
+          navigation.navigate("DrawerNavigator");
+        })
+        .catch((error) => {
+          console.log("Error occurred ", error);
+        })
+        .finally(() => {
+          storeData();
+          dispatch(loaderAction(false));
+        });
+    } catch ({ message }) {
+      dispatch(loaderAction(false));
+    }
+  };
   useEffect(() => {
     retrieveData();
   }, []);
@@ -205,7 +235,7 @@ export default function Login(props: IProps) {
                 style={styles.elev}
                 mode="contained"
                 color={colors.FACEBOOK}
-                onPress={() => navigation.navigate("DrawerNavigator")}
+                onPress={() => handleAuth()}
               >
                 Ingresar con Facebook
               </Button>

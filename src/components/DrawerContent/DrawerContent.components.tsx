@@ -6,6 +6,8 @@ import { DrawerContentScrollView } from "@react-navigation/drawer";
 import styles from "./DrawerContent.styles";
 import colors from "../../../assets/colors";
 import { auth } from "../../../firebase";
+import * as Facebook from "expo-facebook";
+
 interface IProps {
   navigation: any;
 }
@@ -13,7 +15,13 @@ interface IProps {
 function DrawerNavigatorContent({ navigation }: IProps) {
   const storeData = async () => {
     await AsyncStorage.setItem("log", "out");
+    auth.signOut().then(() => {
+      navigation.reset({
+        routes: [{ name: "Login" }],
+      });
+    });
   };
+
   return (
     <>
       <DrawerContentScrollView style={{ marginTop: -23 }} {...navigation}>
@@ -163,12 +171,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         <Drawer.Item
           label={<Text style={styles.inactive}>Cerrar Sesión</Text>}
           onTouchEnd={() => {
-            auth.signOut().then(() => {
-              navigation.reset({
-                routes: [{ name: "Login" }],
-              });
-            }),
-              storeData();
+            storeData();
           }}
           style={styles.drawerStyle}
           icon={() => (
