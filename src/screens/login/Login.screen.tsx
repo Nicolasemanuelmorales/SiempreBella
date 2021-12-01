@@ -51,9 +51,6 @@ export default function Login(props: IProps) {
   useEffect(() => {
     retrieveData();
   }, []);
-  useEffect(() => {
-    retrieveData();
-  }, []);
 
   const login = () => {
     setPassError("");
