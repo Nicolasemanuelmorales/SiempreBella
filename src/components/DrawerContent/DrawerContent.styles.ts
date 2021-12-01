@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   prin: {
     backgroundColor: colors.PRINCIPAL,
     marginTop: -5,
-    paddingTop: 23,
+    paddingTop: 5,
   },
   icon: {
     width: 32,

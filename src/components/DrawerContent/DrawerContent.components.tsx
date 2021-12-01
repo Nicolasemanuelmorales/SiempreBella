@@ -6,8 +6,8 @@ import { DrawerContentScrollView } from "@react-navigation/drawer";
 import styles from "./DrawerContent.styles";
 import colors from "../../../assets/colors";
 import auth from "../../../firebase";
-import * as Facebook from "expo-facebook";
 import { signOut } from "firebase/auth";
+import { StatusBar } from "expo-status-bar";
 
 interface IProps {
   navigation: any;
@@ -25,7 +25,8 @@ function DrawerNavigatorContent({ navigation }: IProps) {
 
   return (
     <>
-      <DrawerContentScrollView style={{ marginTop: -23 }} {...navigation}>
+      <StatusBar backgroundColor={colors.PRINCIPAL} />
+      <DrawerContentScrollView {...navigation}>
         <Drawer.Section style={styles.prin}>
           <View style={styles.headerDrawer}>
             <View
