@@ -8,19 +8,27 @@ import colors from "../../../assets/colors";
 import auth from "../../../firebase";
 import { signOut } from "firebase/auth";
 import { StatusBar } from "expo-status-bar";
+import { useDispatch } from "react-redux";
+import loaderAction from "../../redux/actions/LoaderAction";
 
 interface IProps {
   navigation: any;
 }
 
 function DrawerNavigatorContent({ navigation }: IProps) {
+  const dispatch = useDispatch();
+
   const storeData = async () => {
-    await AsyncStorage.setItem("log", "out");
-    signOut(auth).then(() => {
-      navigation.reset({
-        routes: [{ name: "Login" }],
+    dispatch(loaderAction(true));
+    signOut(auth)
+      .then(() => {
+        navigation.reset({
+          routes: [{ name: "Login" }],
+        });
+      })
+      .finally(() => {
+        dispatch(loaderAction(false));
       });
-    });
   };
 
   return (

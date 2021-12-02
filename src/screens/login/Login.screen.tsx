@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
-import { Button, HelperText, TextInput } from "react-native-paper";
+import { Button, HelperText, Switch, TextInput } from "react-native-paper";
 import colors from "../../../assets/colors";
 import Boton from "../../components/Boton/Boton.components";
 import Icon from "react-native-vector-icons/FontAwesome5";
@@ -25,10 +25,12 @@ interface IProps {
 export default function Login(props: IProps) {
   const { navigation } = props;
   const [hidePass, setHidePass] = useState(true);
-  const [email, setEmail] = useState("prueba1@prueba.com");
-  const [pass, setPass] = useState("prueba01");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
+  const [recordarme, setRecordarme] = useState(false);
+
   const dispatch = useDispatch();
 
   const validateEmail = (email) => {
@@ -48,14 +50,8 @@ export default function Login(props: IProps) {
     });
   };
 
-  useEffect(() => {
-    dispatch(loaderAction(true));
-    retrieveData();
-  }, []);
-
   const login = () => {
     setPassError("");
-
     if (email === "") {
       setEmailError("Campo vacio.");
     } else if (!validateEmail(email)) {
@@ -71,6 +67,7 @@ export default function Login(props: IProps) {
 
       signInWithEmailAndPassword(auth, email, pass)
         .then(() => {
+          recuerdame();
           navigation.navigate("DrawerNavigator");
         })
         .catch((error) => {
@@ -92,9 +89,36 @@ export default function Login(props: IProps) {
     }
   };
 
+  const recuerdame = async () => {
+    if (recordarme) {
+      await AsyncStorage.setItem("email", email);
+      await AsyncStorage.setItem("pass", pass);
+    } else {
+      await AsyncStorage.removeItem("email");
+      await AsyncStorage.removeItem("pass");
+    }
+  };
+
+  const initRecuerdame = async () => {
+    let passAux = await AsyncStorage.getItem("pass");
+    let emailAux = await AsyncStorage.getItem("email");
+
+    if (passAux || emailAux) {
+      setEmail(emailAux);
+      setPass(passAux);
+      setRecordarme(true);
+    }
+  };
+
+  useEffect(() => {
+    initRecuerdame();
+    dispatch(loaderAction(true));
+    retrieveData();
+  }, []);
+
   return (
     <>
-      <ScrollView style={{ paddingTop: "10%" }}>
+      <ScrollView>
         <View style={styles.boxGeneral}>
           <View style={styles.minH}>
             <Image
@@ -127,7 +151,6 @@ export default function Login(props: IProps) {
             >
               {emailError}
             </HelperText>
-
             <TextInput
               theme={{
                 colors: {
@@ -156,15 +179,38 @@ export default function Login(props: IProps) {
                 />
               }
             />
-            <HelperText
+
+            <View
               style={{
-                color: "red",
+                flexDirection: "row",
+                justifyContent: "space-between",
               }}
-              type="error"
-              visible={passError === "" ? false : true}
             >
-              {passError}
-            </HelperText>
+              <HelperText
+                style={{
+                  color: "red",
+                }}
+                type="error"
+                visible={passError === "" ? false : true}
+              >
+                {passError}
+              </HelperText>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text
+                  style={{ fontSize: 16, marginRight: 2, color: "#757575" }}
+                >
+                  Recordar
+                </Text>
+                <Switch
+                  value={recordarme}
+                  onTouchStart={() => {
+                    setRecordarme(!recordarme),
+                      setTimeout(() => recuerdame(), 1000);
+                  }}
+                  color={colors.PRINCIPAL}
+                />
+              </View>
+            </View>
             <View style={styles.boxBoton}>
               <View style={styles.ingresar}>
                 <Boton title="Ingresar" action={login} />
@@ -181,6 +227,7 @@ export default function Login(props: IProps) {
                 />
               </View>
             </View>
+
             <View style={styles.mb}>
               <Button
                 icon={() => (
@@ -201,7 +248,7 @@ export default function Login(props: IProps) {
                 Ingresar con Facebook
               </Button>
             </View>
-            <View style={styles.mb}>
+            <View>
               <Button
                 icon={() => (
                   <Image
@@ -222,6 +269,17 @@ export default function Login(props: IProps) {
                 Ingresar con Gmail  
               </Button>
             </View>
+
+            <Text
+              style={{
+                fontSize: 16,
+                textAlign: "center",
+                marginTop: 20,
+                color: "#757575",
+              }}
+            >
+              ¿Olvidaste tu contraseña?
+            </Text>
           </View>
         </View>
       </ScrollView>

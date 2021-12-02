@@ -83,7 +83,7 @@ export default function Registrar(props: IProps) {
   };
 
   return (
-    <ScrollView style={{ paddingTop: "10%" }}>
+    <ScrollView>
       <View style={styles.boxGeneral}>
         <View style={styles.minH}>
           <Image
