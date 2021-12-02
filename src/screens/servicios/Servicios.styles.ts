@@ -5,9 +5,9 @@ const styles = StyleSheet.create({
   boxService: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 5,
+    paddingLeft: 5,
     paddingTop: 10,
-    marginHorizontal: 10,
+    marginLeft: 10,
     borderColor: colors.PRINCIPAL,
   },
   title: {

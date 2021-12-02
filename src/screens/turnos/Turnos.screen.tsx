@@ -65,7 +65,6 @@ export default function Turnos() {
       />
       <View style={styles.agregar}>
         <Boton
-          h={30}
           title="Agregar turno"
           action={() => {
             setOpenModal(true), setEditar(false);
@@ -95,52 +94,55 @@ export default function Turnos() {
           </View>
         </View>
       </View>
+      <View style={{ marginBottom: 15 }}>
+        {turnos.map((item, key) => {
+          return (
+            <View key={key} style={styles.boxGeneral}>
+              <Text>{item.hora}</Text>
+              <View style={styles.time}>
+                <Text style={styles.tiempo}>
+                  {sumarTiempo(item.servicios)}M
+                </Text>
+                <Text style={styles.diner}>${sumarPrecio(item.servicios)}</Text>
+              </View>
+              <View style={styles.name}>
+                {item.servicios.map((item2, key2) => {
+                  return (
+                    <Text key={key2} style={{ textAlign: "center" }}>
+                      {item2.nombre}
+                    </Text>
+                  );
+                })}
+              </View>
+              <Pressable
+                onPress={() => {
+                  setEditar(true), setOpenModal(true);
+                }}
+              >
+                <Icon
+                  style={styles.icono}
+                  name={"edit"}
+                  size={16}
+                  color={colors.PRINCIPAL}
+                />
+              </Pressable>
 
-      {turnos.map((item, key) => {
-        return (
-          <View key={key} style={styles.boxGeneral}>
-            <Text>{item.hora}</Text>
-            <View style={styles.time}>
-              <Text style={styles.tiempo}>{sumarTiempo(item.servicios)}M</Text>
-              <Text style={styles.diner}>${sumarPrecio(item.servicios)}</Text>
+              <Pressable
+                onPress={() => {
+                  setEliminar(item), isOpen(true);
+                }}
+              >
+                <Icon
+                  style={styles.icono}
+                  name={"trash"}
+                  size={16}
+                  color={colors.PRINCIPAL}
+                />
+              </Pressable>
             </View>
-            <View style={styles.name}>
-              {item.servicios.map((item2, key2) => {
-                return (
-                  <Text key={key2} style={{ textAlign: "center" }}>
-                    {item2.nombre}
-                  </Text>
-                );
-              })}
-            </View>
-            <Pressable
-              onPress={() => {
-                setEditar(true), setOpenModal(true);
-              }}
-            >
-              <Icon
-                style={styles.icono}
-                name={"edit"}
-                size={16}
-                color={colors.PRINCIPAL}
-              />
-            </Pressable>
-
-            <Pressable
-              onPress={() => {
-                setEliminar(item), isOpen(true);
-              }}
-            >
-              <Icon
-                style={styles.icono}
-                name={"trash"}
-                size={16}
-                color={colors.PRINCIPAL}
-              />
-            </Pressable>
-          </View>
-        );
-      })}
+          );
+        })}
+      </View>
     </ScrollView>
   );
 }

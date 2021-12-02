@@ -24,7 +24,7 @@ export default function Precio(props: IProps) {
   const [editar, setEditar] = useState(false);
 
   return (
-    <ScrollView style={{ marginBottom: 20 }}>
+    <ScrollView>
       <ModalGeneral
         children={
           <View style={{ alignItems: "center" }}>
@@ -56,7 +56,6 @@ export default function Precio(props: IProps) {
       />
       <View style={styles.agregar}>
         <Boton
-          h={30}
           title="Agregar Servicio"
           action={() => {
             setOpenModal(true), setEditar(false);
@@ -64,7 +63,7 @@ export default function Precio(props: IProps) {
         />
       </View>
 
-      <View style={{ paddingHorizontal: 20 }}>
+      <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
         {servicios
           .sort(compareValues("categoria", "asc"))
           .map((item: Servicio, index: any) => {

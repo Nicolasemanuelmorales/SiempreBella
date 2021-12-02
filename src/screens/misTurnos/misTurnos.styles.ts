@@ -4,8 +4,7 @@ import colors from "../../../assets/colors";
 const styles = StyleSheet.create({
   agregar: {
     marginTop: 20,
-    width: "90%",
-    alignSelf: "center",
+    marginHorizontal: 20,
   },
   margen: { marginBottom: 20 },
   botonera: {

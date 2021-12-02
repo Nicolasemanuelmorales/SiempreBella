@@ -5,7 +5,7 @@ import MisTurnosScreen from "../screens/registrar/Registrar.screen";
 
 const Stack = createStackNavigator();
 
-export default function MisTurnosStackNavigator() {
+export default function RegistrarStackNavigator() {
   return (
     <Stack.Navigator
       initialRouteName="RegistrarScreen"

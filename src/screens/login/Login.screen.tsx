@@ -41,6 +41,7 @@ export default function Login(props: IProps) {
 
   const retrieveData = async () => {
     auth.onAuthStateChanged((user) => {
+      dispatch(loaderAction(false));
       if (user) {
         navigation.navigate("DrawerNavigator");
       }
@@ -48,6 +49,7 @@ export default function Login(props: IProps) {
   };
 
   useEffect(() => {
+    dispatch(loaderAction(true));
     retrieveData();
   }, []);
 

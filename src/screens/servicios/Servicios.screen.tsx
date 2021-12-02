@@ -15,8 +15,8 @@ export default function Servicios(props: IProps) {
   const { navigation } = props;
 
   return (
-    <ScrollView style={{ marginBottom: 20 }}>
-      <View style={{ paddingHorizontal: 20 }}>
+    <ScrollView>
+      <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
         {servicios
           .sort(compareValues("categoria", "asc"))
           .map((item: Servicio, index: any) => {

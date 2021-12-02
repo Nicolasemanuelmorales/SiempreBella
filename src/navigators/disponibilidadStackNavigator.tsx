@@ -1,17 +1,17 @@
 import React from "react";
 import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
-import Servicios from "../screens/servicios/Servicios.screen";
+import Disponibilidad from "../screens/disponibilidad/Disponibilidad.screen";
 
 const Stack = createStackNavigator();
 
-export default function serviciosStackNavigator() {
+export default function DisponibilidadStackNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="ServiciosScreen"
+      initialRouteName="DisponibilidadScreen"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name="ServiciosScreen" component={Servicios} />
+      <Stack.Screen name="DisponibilidadScreen" component={Disponibilidad} />
     </Stack.Navigator>
   );
 }

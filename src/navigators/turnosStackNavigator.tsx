@@ -5,7 +5,7 @@ import Turnos from "../screens/turnos/Turnos.screen";
 
 const Stack = createStackNavigator();
 
-export default function PrecioStackNavigator() {
+export default function turnosStackNavigator() {
   return (
     <Stack.Navigator
       initialRouteName="TurnosScreen"

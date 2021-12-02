@@ -120,7 +120,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
           label={<Text style={styles.inactive}>Disponibilidad</Text>}
           onTouchEnd={() => {
             navigation.reset({
-              routes: [{ name: "Login" }],
+              routes: [{ name: "Disponibilidad" }],
             });
           }}
           style={styles.drawerStyle}

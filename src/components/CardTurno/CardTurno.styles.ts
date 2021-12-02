@@ -4,7 +4,7 @@ import colors from "../../../assets/colors";
 const styles = StyleSheet.create({
   boxGeneral: {
     flexDirection: "row",
-    width: "90%",
+    marginHorizontal: 20,
     alignSelf: "center",
     marginTop: 20,
     borderRadius: 4,

@@ -73,15 +73,12 @@ export default function MisTurnos() {
         open={open}
       />
       <View style={styles.agregar}>
-        <Button
-          mode="contained"
-          color={colors.PRINCIPAL}
-          onPress={() => {
+        <Boton
+          title="Agregar turno"
+          action={() => {
             setOpenModal(true), setEditar(false);
           }}
-        >
-          Agregar turno
-        </Button>
+        />
       </View>
       <View style={styles.margen}>
         {turnos.map((item, key) => {
