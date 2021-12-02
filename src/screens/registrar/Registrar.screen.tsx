@@ -9,6 +9,7 @@ import auth from "../../../firebase";
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { useDispatch } from "react-redux";
 import loaderAction from "../../redux/actions/LoaderAction";
+import { validateEmail } from "../../utils/validateEmail";
 
 interface IProps {
   navigation: any;
@@ -25,14 +26,6 @@ export default function Registrar(props: IProps) {
   const [passError, setPassError] = useState("");
   const [secondPassError, setSecondPassError] = useState("");
   const dispatch = useDispatch();
-
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
 
   const registrar = () => {
     setEmailError("");

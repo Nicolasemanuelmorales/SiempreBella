@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./src/navigators/loginStackNavigator";
+import Login from "./src/navigators/stackNavigator";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./src/redux/reducers/rootReducer";
