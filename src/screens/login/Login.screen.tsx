@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  AsyncStorage,
-  Image,
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { Button, HelperText, Switch, TextInput } from "react-native-paper";
 import colors from "../../../assets/colors";
 import Boton from "../../components/Boton/Boton.components";
@@ -17,6 +10,7 @@ import { useDispatch } from "react-redux";
 import loaderAction from "../../redux/actions/LoaderAction";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { validateEmail } from "../../utils/validateEmail";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface IProps {
   navigation: any;

@@ -29,7 +29,12 @@ const disponibilidadMock: Disponibilidad[] = [
       {
         id: 2,
         desde: "14:00",
-        hasta: "17:00",
+        hasta: "15:00",
+      },
+      {
+        id: 2,
+        desde: "17:00",
+        hasta: "18:00",
       },
     ],
   },

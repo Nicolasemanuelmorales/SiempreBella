@@ -22,5 +22,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginHorizontal: 20,
   },
+  icono: {
+    marginRight: 10,
+    display: "flex",
+    alignSelf: "center",
+  },
 });
 export default styles;

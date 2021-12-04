@@ -1,7 +1,7 @@
 import React from "react";
 import { Drawer } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { View, Text, Image, AsyncStorage } from "react-native";
+import { View, Text, Image } from "react-native";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import styles from "./DrawerContent.styles";
 import colors from "../../../assets/colors";
@@ -39,7 +39,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
           <View style={styles.headerDrawer}>
             <View
               style={styles.circulo}
-              onTouchEnd={() => {
+              onTouchStart={() => {
                 navigation.reset({
                   routes: [{ name: "Home" }],
                 });
@@ -57,7 +57,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         </Drawer.Section>
         <Drawer.Item
           label={<Text style={styles.inactive}>Inicio</Text>}
-          onTouchEnd={() => {
+          onTouchStart={() => {
             navigation.reset({
               routes: [{ name: "Home" }],
             });
@@ -74,7 +74,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         />
         <Drawer.Item
           label={<Text style={styles.inactive}>Servicios</Text>}
-          onTouchEnd={() => {
+          onTouchStart={() => {
             navigation.reset({
               routes: [{ name: "Servicios" }],
             });
@@ -91,7 +91,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         />
         <Drawer.Item
           label={<Text style={styles.inactive}>Mis Turnos</Text>}
-          onTouchEnd={() => {
+          onTouchStart={() => {
             navigation.reset({
               routes: [{ name: "MisTurnos" }],
             });
@@ -109,7 +109,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         />
         <Drawer.Item
           label={<Text style={styles.inactive}>Turnos</Text>}
-          onTouchEnd={() => {
+          onTouchStart={() => {
             navigation.reset({
               routes: [{ name: "Turnos" }],
             });
@@ -126,7 +126,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         />
         <Drawer.Item
           label={<Text style={styles.inactive}>Disponibilidad</Text>}
-          onTouchEnd={() => {
+          onTouchStart={() => {
             navigation.reset({
               routes: [{ name: "Disponibilidad" }],
             });
@@ -144,7 +144,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         />
         <Drawer.Item
           label={<Text style={styles.inactive}>Precios</Text>}
-          onTouchEnd={() => {
+          onTouchStart={() => {
             navigation.reset({
               routes: [{ name: "Precio" }],
             });
@@ -162,7 +162,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         />
         <Drawer.Item
           label={<Text style={styles.inactive}>Estadistica</Text>}
-          onTouchEnd={() => {
+          onTouchStart={() => {
             navigation.reset({
               routes: [{ name: "Login" }],
             });
@@ -180,7 +180,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         />
         <Drawer.Item
           label={<Text style={styles.inactive}>Cerrar Sesión</Text>}
-          onTouchEnd={() => {
+          onTouchStart={() => {
             storeData();
           }}
           style={styles.drawerStyle}
