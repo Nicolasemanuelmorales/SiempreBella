@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: -20,
     fontSize: 40,
-    fontFamily: "bold",
+    fontFamily: "Brblack",
   },
   boxGeneral2: {
     flex: 1,

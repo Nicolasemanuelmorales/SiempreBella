@@ -118,6 +118,7 @@ export default function Login(props: IProps) {
                 primary: colors.PRINCIPAL,
                 background: colors.BLANCO,
                 error: "red",
+                text: emailError === "" ? "#000" : "red",
               },
             }}
             error={emailError === "" ? false : true}
@@ -141,6 +142,7 @@ export default function Login(props: IProps) {
                 primary: colors.PRINCIPAL,
                 background: colors.BLANCO,
                 error: "red",
+                text: passError === "" ? "#000" : "red",
               },
             }}
             mode="outlined"
@@ -156,7 +158,7 @@ export default function Login(props: IProps) {
                     <Icon
                       name={hidePass ? "eye-slash" : "eye"}
                       size={20}
-                      color={"#757575"}
+                      color={passError === "" ? "#757575" : "red"}
                     />
                   </Pressable>
                 )}
