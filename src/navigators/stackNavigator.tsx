@@ -9,6 +9,8 @@ import DrawerNavigator from "./drawerNavigator";
 import { useSelector } from "react-redux";
 import { IRootState } from "../redux/reducers/rootReducer";
 import Loader from "../components/Loader/Loader.components";
+import { StatusBar } from "expo-status-bar";
+import colors from "../../assets/colors";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +38,7 @@ export default function stackNavigator() {
         </Stack.Navigator>
       </NavigationContainer>
       <Loader open={loader} />
+      <StatusBar backgroundColor={colors.PRINCIPAL} />
     </>
   );
 }

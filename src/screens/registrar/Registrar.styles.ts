@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 40,
-    fontWeight: "bold",
     color: colors.PRINCIPAL,
     textAlign: "center",
     marginTop: -20,
+    fontFamily: "Brblack",
   },
   boxGeneral2: {
     flex: 1,

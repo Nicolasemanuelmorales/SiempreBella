@@ -40,7 +40,6 @@ export default function Login(props: IProps) {
     if (email === "") {
       setEmailError("Campo vacio.");
     } else if (!validateEmail(email)) {
-      setEmailError("Email Incorrecto.");
     } else {
       setEmailError("");
     }

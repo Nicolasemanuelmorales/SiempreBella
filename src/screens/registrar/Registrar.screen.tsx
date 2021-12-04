@@ -83,9 +83,7 @@ export default function Registrar(props: IProps) {
             style={styles.img}
             source={require("../../../assets/images/flor.png")}
           />
-          <Text style={{ fontFamily: "Inter-SemiBoldItalic", fontSize: 40 }}>
-            Siempre Bella
-          </Text>
+          <Text style={styles.title}>Siempre Bella</Text>
         </View>
         <View style={styles.boxGeneral2}>
           <TextInput
