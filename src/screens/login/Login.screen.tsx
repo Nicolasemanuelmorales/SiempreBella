@@ -217,13 +217,6 @@ export default function Login(props: IProps) {
               )}
               style={styles.elev}
               mode="contained"
-              contentStyle={{
-                justifyContent: "flex-start",
-                display: "flex",
-                alignSelf: "center",
-                paddingLeft: 20,
-              }}
-              labelStyle={{ marginLeft: 25 }}
               color={colors.FACEBOOK}
               onPress={() => console.log("")}
             >
@@ -240,11 +233,6 @@ export default function Login(props: IProps) {
               )}
               style={styles.elev}
               mode="contained"
-              contentStyle={{
-                justifyContent: "flex-start",
-                alignSelf: "center",
-                display: "flex",
-              }}
               color={colors.GMAIL}
               onPress={() => console.log("")}
             >

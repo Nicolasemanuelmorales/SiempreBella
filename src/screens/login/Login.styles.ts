@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: -20,
     fontSize: 40,
-    fontFamily: "Brblack",
+    fontFamily: "bold",
   },
   boxGeneral2: {
     flex: 1,
@@ -51,9 +51,8 @@ const styles = StyleSheet.create({
   },
   elev: { elevation: 0 },
   imgG: {
-    width: 30,
-    height: 30,
-    marginLeft: 0,
+    width: 20,
+    height: 21,
   },
 });
 export default styles;
