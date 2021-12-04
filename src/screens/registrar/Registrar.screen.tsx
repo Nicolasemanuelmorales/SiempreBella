@@ -59,7 +59,6 @@ export default function Registrar(props: IProps) {
       createUserWithEmailAndPassword(auth, email, pass)
         .then((user) => {
           navigation.navigate("Login");
-          dispatch(loaderAction(false));
         })
         .catch((error) => {
           if (error.code === "auth/invalid-email") {
@@ -71,7 +70,8 @@ export default function Registrar(props: IProps) {
           if (error.code === "auth/weak-password") {
             setPassError("Minimo 8 caracteres.");
           }
-        });
+        })
+        .finally(() => dispatch(loaderAction(false)));
     }
   };
 
@@ -92,6 +92,7 @@ export default function Registrar(props: IProps) {
                 primary: colors.PRINCIPAL,
                 background: colors.BLANCO,
                 error: "red",
+                text: passError === "" ? "#000" : "red",
               },
             }}
             onChangeText={setEmail}
@@ -116,6 +117,7 @@ export default function Registrar(props: IProps) {
                 primary: colors.PRINCIPAL,
                 background: colors.BLANCO,
                 error: "red",
+                text: passError === "" ? "#000" : "red",
               },
             }}
             mode="outlined"
@@ -131,7 +133,7 @@ export default function Registrar(props: IProps) {
                   <Icon
                     name={hidePass ? "eye-slash" : "eye"}
                     size={20}
-                    color={"#757575"}
+                    color={passError === "" ? "#757575" : "red"}
                   />
                 )}
               />
@@ -152,6 +154,7 @@ export default function Registrar(props: IProps) {
                 primary: colors.PRINCIPAL,
                 background: colors.BLANCO,
                 error: "red",
+                text: passError === "" ? "#000" : "red",
               },
             }}
             mode="outlined"
@@ -167,7 +170,7 @@ export default function Registrar(props: IProps) {
                   <Icon
                     name={hidePassRepeat ? "eye-slash" : "eye"}
                     size={20}
-                    color={"#757575"}
+                    color={passError === "" ? "#757575" : "red"}
                   />
                 )}
               />
