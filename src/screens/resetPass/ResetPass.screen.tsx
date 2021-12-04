@@ -53,6 +53,7 @@ export default function ResetPass(props: IProps) {
             primary: colors.PRINCIPAL,
             background: colors.BLANCO,
             error: "red",
+            text: emailError === "" ? "#000" : "red",
           },
         }}
         error={emailError === "" ? false : true}
