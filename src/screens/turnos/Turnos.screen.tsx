@@ -4,12 +4,12 @@ import Boton from "../../components/Boton/Boton.components";
 import ModalGeneral from "../../components/Modal/ModalGeneral.components";
 import AgregarTurno from "../../components/AgregarTurno/AgregarTurno.components";
 import styles from "./Turnos.styles";
-import turnos from "../../../assets/turnosMock";
+import turnos from "../../../assets/mocks/turnosMock";
 import colors from "../../../assets/colors";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Servicio from "../../models/Servicio";
 import Turno from "../../models/Turno";
-import turno from "../../../assets/turnoMock";
+import turno from "../../../assets/mocks/turnoMock";
 
 export default function Turnos() {
   const [openModal, setOpenModal] = useState(false);

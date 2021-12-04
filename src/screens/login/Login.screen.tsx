@@ -25,6 +25,7 @@ export default function Login(props: IProps) {
   const [passError, setPassError] = useState("");
   const [recordarme, setRecordarme] = useState(false);
   const dispatch = useDispatch();
+  const [asd, setasd] = useState(true);
 
   const retrieveData = async () => {
     auth.onAuthStateChanged((user) => {
@@ -103,168 +104,172 @@ export default function Login(props: IProps) {
 
   return (
     <ScrollView>
-      <View style={styles.boxGeneral}>
-        <View style={styles.minH}>
-          <Image
-            style={styles.img}
-            source={require("../../../assets/images/flor.png")}
-          />
-          <Text style={styles.title}>Siempre Bella</Text>
-        </View>
-        <View style={styles.boxGeneral2}>
-          <TextInput
-            theme={{
-              colors: {
-                primary: colors.PRINCIPAL,
-                background: colors.BLANCO,
-                error: "red",
-              },
-            }}
-            error={emailError === "" ? false : true}
-            value={email}
-            onChangeText={setEmail}
-            mode="outlined"
-            label="Email"
-          />
-          <HelperText
-            style={{
-              color: "red",
-            }}
-            type="error"
-            visible={emailError === "" ? false : true}
-          >
-            {emailError}
-          </HelperText>
-          <TextInput
-            theme={{
-              colors: {
-                primary: colors.PRINCIPAL,
-                background: colors.BLANCO,
-                error: "red",
-              },
-            }}
-            mode="outlined"
-            label="Contraseña"
-            value={pass}
-            error={passError === "" ? false : true}
-            onChangeText={setPass}
-            secureTextEntry={hidePass}
-            right={
-              <TextInput.Icon
-                name={() => (
-                  <Pressable onTouchStart={() => setHidePass(!hidePass)}>
-                    <Icon
-                      name={hidePass ? "eye-slash" : "eye"}
-                      size={20}
-                      color={"#757575"}
-                    />
-                  </Pressable>
-                )}
-              />
-            }
-          />
-
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
+      {asd ? (
+        <View style={styles.boxGeneral}>
+          <View style={styles.minH}>
+            <Image
+              style={styles.img}
+              source={require("../../../assets/images/flor.png")}
+            />
+            <Text style={styles.title}>Siempre Bella</Text>
+          </View>
+          <View style={styles.boxGeneral2}>
+            <TextInput
+              theme={{
+                colors: {
+                  primary: colors.PRINCIPAL,
+                  background: colors.BLANCO,
+                  error: "red",
+                },
+              }}
+              error={emailError === "" ? false : true}
+              value={email}
+              onChangeText={setEmail}
+              mode="outlined"
+              label="Email"
+            />
             <HelperText
               style={{
                 color: "red",
               }}
               type="error"
-              visible={passError === "" ? false : true}
+              visible={emailError === "" ? false : true}
             >
-              {passError}
+              {emailError}
             </HelperText>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text style={{ fontSize: 16, marginRight: 2, color: "#757575" }}>
-                Recordar
-              </Text>
-              <Switch
-                value={recordarme}
-                onTouchStart={() => {
-                  setRecordarme(!recordarme),
-                    setTimeout(() => recuerdame(), 1000);
-                }}
-                color={colors.PRINCIPAL}
-              />
-            </View>
-          </View>
-          <View style={styles.boxBoton}>
-            <View style={styles.ingresar}>
-              <Boton title="Ingresar" action={login} />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Button
-                style={{ elevation: 0 }}
-                contentStyle={{ height: 37 }}
-                mode="contained"
-                color={colors.PRINCIPAL}
-                labelStyle={styles.labelS}
-                children={"Registrar"}
-                onPress={() => navigation.navigate("Registrar")}
-              />
-            </View>
-          </View>
-
-          <View style={styles.mb}>
-            <Button
-              icon={() => (
-                <Icon name={"facebook"} size={20} color={colors.BLANCO} />
-              )}
-              style={styles.elev}
-              mode="contained"
-              contentStyle={{
-                justifyContent: "flex-start",
-                display: "flex",
-                alignSelf: "center",
-                paddingLeft: 20,
+            <TextInput
+              theme={{
+                colors: {
+                  primary: colors.PRINCIPAL,
+                  background: colors.BLANCO,
+                  error: "red",
+                },
               }}
-              labelStyle={{ marginLeft: 25 }}
-              color={colors.FACEBOOK}
-              onPress={() => console.log("")}
-            >
-              Ingresar con Facebook
-            </Button>
-          </View>
-          <View>
-            <Button
-              icon={() => (
-                <Image
-                  style={styles.imgG}
-                  source={require("../../../assets/images/gmail.jpg")}
+              mode="outlined"
+              label="Contraseña"
+              value={pass}
+              error={passError === "" ? false : true}
+              onChangeText={setPass}
+              secureTextEntry={hidePass}
+              right={
+                <TextInput.Icon
+                  name={() => (
+                    <Pressable onTouchStart={() => setHidePass(!hidePass)}>
+                      <Icon
+                        name={hidePass ? "eye-slash" : "eye"}
+                        size={20}
+                        color={"#757575"}
+                      />
+                    </Pressable>
+                  )}
                 />
-              )}
-              style={styles.elev}
-              mode="contained"
-              contentStyle={{
-                justifyContent: "flex-start",
-                alignSelf: "center",
-                display: "flex",
-              }}
-              color={colors.GMAIL}
-              onPress={() => console.log("")}
-            >
-              Ingresar con Gmail  
-            </Button>
-          </View>
+              }
+            />
 
-          <Text
-            style={{
-              fontSize: 16,
-              textAlign: "center",
-              marginTop: 20,
-              color: "#757575",
-            }}
-            onPress={() => navigation.navigate("ResetPass")}
-          >
-            ¿Olvidaste tu contraseña?
-          </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <HelperText
+                style={{
+                  color: "red",
+                }}
+                type="error"
+                visible={passError === "" ? false : true}
+              >
+                {passError}
+              </HelperText>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text
+                  style={{ fontSize: 16, marginRight: 2, color: "#757575" }}
+                >
+                  Recordar
+                </Text>
+                <Switch
+                  value={recordarme}
+                  onTouchStart={() => {
+                    setRecordarme(!recordarme),
+                      setTimeout(() => recuerdame(), 1000);
+                  }}
+                  color={colors.PRINCIPAL}
+                />
+              </View>
+            </View>
+            <View style={styles.boxBoton}>
+              <View style={styles.ingresar}>
+                <Boton title="Ingresar" action={login} />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Button
+                  style={{ elevation: 0 }}
+                  contentStyle={{ height: 37 }}
+                  mode="contained"
+                  color={colors.PRINCIPAL}
+                  labelStyle={styles.labelS}
+                  children={"Registrar"}
+                  onPress={() => navigation.navigate("Registrar")}
+                />
+              </View>
+            </View>
+
+            <View style={styles.mb}>
+              <Button
+                icon={() => (
+                  <Icon name={"facebook"} size={20} color={colors.BLANCO} />
+                )}
+                style={styles.elev}
+                mode="contained"
+                contentStyle={{
+                  justifyContent: "flex-start",
+                  display: "flex",
+                  alignSelf: "center",
+                  paddingLeft: 20,
+                }}
+                labelStyle={{ marginLeft: 25 }}
+                color={colors.FACEBOOK}
+                onPress={() => console.log("")}
+              >
+                Ingresar con Facebook
+              </Button>
+            </View>
+            <View>
+              <Button
+                icon={() => (
+                  <Image
+                    style={styles.imgG}
+                    source={require("../../../assets/images/gmail.jpg")}
+                  />
+                )}
+                style={styles.elev}
+                mode="contained"
+                contentStyle={{
+                  justifyContent: "flex-start",
+                  alignSelf: "center",
+                  display: "flex",
+                }}
+                color={colors.GMAIL}
+                onPress={() => console.log("")}
+              >
+                Ingresar con Gmail  
+              </Button>
+            </View>
+
+            <Text
+              style={{
+                fontSize: 16,
+                textAlign: "center",
+                marginTop: 20,
+                color: "#757575",
+              }}
+              onPress={() => navigation.navigate("ResetPass")}
+            >
+              ¿Olvidaste tu contraseña?
+            </Text>
+          </View>
         </View>
-      </View>
+      ) : null}
     </ScrollView>
   );
 }

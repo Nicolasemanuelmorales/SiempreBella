@@ -1,4 +1,4 @@
-import Disponibilidad from "../src/models/Disponibilidad";
+import Disponibilidad from "../../src/models/Disponibilidad";
 
 const disponibilidadMock: Disponibilidad[] = [
   {

@@ -5,7 +5,7 @@ import styles from "../servicios/Servicios.styles";
 import Servicio from "../../models/Servicio";
 import compareValues from "../../utils/sort";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import servicios from "../../../assets/serviciosMock";
+import servicios from "../../../assets/mocks/serviciosMock";
 
 interface IProps {
   navigation: any;

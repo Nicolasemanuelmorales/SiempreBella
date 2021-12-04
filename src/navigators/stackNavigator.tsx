@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginStackNavigator from "./loginStackNavigator";

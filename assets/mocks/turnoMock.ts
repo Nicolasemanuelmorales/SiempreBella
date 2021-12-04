@@ -1,5 +1,5 @@
-import Turno from "../src/models/Turno";
-import Usuario from "../src/models/Usuario";
+import Turno from "../../src/models/Turno";
+import Usuario from "../../src/models/Usuario";
 
 const turno: Turno = {
   id: 100,

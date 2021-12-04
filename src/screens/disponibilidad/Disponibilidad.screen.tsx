@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import colors from "../../../assets/colors";
-import disponibilidadMock from "../../../assets/disponibilidadMock";
+import disponibilidadMock from "../../../assets/mocks/disponibilidadMock";
 import Boton from "../../components/Boton/Boton.components";
 import Disponibilidad from "../../models/Disponibilidad";
 import styles from "./Disponibilidad.styles";
