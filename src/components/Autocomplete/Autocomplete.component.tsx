@@ -138,13 +138,16 @@ function Autocomplete(props: IProps) {
             {multiple ? (
               <Text style={styles.timeMultiple} children={"15 MIN"} />
             ) : null}
-            <FontAwesome
-              onPress={() => (deshablitar ? null : setOpen(!isOpen))}
-              name={isOpen ? "angle-up" : "angle-down"}
-              color={"#9B9B9B"}
-              size={20}
-              style={styles.triangle}
-            />
+            <Pressable
+              onTouchStart={() => (deshablitar ? null : setOpen(!isOpen))}
+            >
+              <FontAwesome
+                name={isOpen ? "angle-up" : "angle-down"}
+                color={"#9B9B9B"}
+                size={20}
+                style={styles.triangle}
+              />
+            </Pressable>
           </View>
         </View>
       )}
