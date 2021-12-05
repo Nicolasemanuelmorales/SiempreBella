@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     color: colors.PRINCIPAL,
   },
   inactive: {
-    fontSize: 15,
+    fontSize: 16,
   },
   img: {
     width: 60,
