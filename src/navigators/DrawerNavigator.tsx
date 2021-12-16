@@ -4,7 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerNavigatorContent from "../components/DrawerContent/DrawerContent.components";
 import Home from "./homeStackNavigator";
 import Admin from "./adminStackNavigator";
-import Precio from "./precioStackNavigator";
+import ServicioAdmin from "./serviciosAdminStackNavigator";
 import Turnos from "./turnosStackNavigator";
 import Disponibilidad from "./disponibilidadStackNavigator";
 import Servicios from "./serviciosStackNavigator";
@@ -41,8 +41,8 @@ export default function DrawerNavigator() {
       />
       <Drawer.Screen
         name="Precio"
-        options={{ title: "PRECIOS" }}
-        component={Precio}
+        options={{ title: "SERVICIOS" }}
+        component={ServicioAdmin}
       />
       <Drawer.Screen
         name="Turnos"

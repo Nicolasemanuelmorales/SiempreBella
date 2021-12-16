@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from "../../../assets/colors";
+import { StatusBar } from "react-native";
 
 const styles = StyleSheet.create({
   headerDrawer: {
@@ -12,6 +13,7 @@ const styles = StyleSheet.create({
   },
   drawerStyle: {
     paddingLeft: 20,
+    backgroundColor: "white",
   },
   circulo: {
     width: 65,
@@ -23,8 +25,7 @@ const styles = StyleSheet.create({
   },
   prin: {
     backgroundColor: colors.PRINCIPAL,
-    marginTop: -5,
-    paddingTop: 5,
+    paddingTop: StatusBar.currentHeight,
   },
   icon: {
     width: 32,
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
   },
   inactive: {
     fontSize: 16,
+    color: "black",
   },
   img: {
     width: 60,

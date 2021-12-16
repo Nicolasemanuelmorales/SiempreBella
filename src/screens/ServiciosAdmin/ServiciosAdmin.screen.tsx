@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import colors from "../../../assets/colors";
-import styles from "./Precio.styles";
+import styles from "./ServiciosAdmin.styles";
 import Servicio from "../../models/Servicio";
 import compareValues from "../../utils/sort";
 import Icon from "react-native-vector-icons/FontAwesome5";
@@ -15,7 +15,7 @@ interface IProps {
   navigation: any;
 }
 
-export default function Precio(props: IProps) {
+export default function ServiciosAdmin(props: IProps) {
   const { navigation } = props;
 
   const [eliminar, setEliminar] = useState<Servicio>(servicio);
@@ -54,14 +54,6 @@ export default function Precio(props: IProps) {
         }
         open={openModal}
       />
-      <View style={styles.agregar}>
-        <Boton
-          title="Agregar Servicio"
-          action={() => {
-            setOpenModal(true), setEditar(false);
-          }}
-        />
-      </View>
 
       <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
         {servicios

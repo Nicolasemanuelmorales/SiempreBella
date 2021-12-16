@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     color: colors.PRINCIPAL,
     textAlign: "center",
     marginTop: -20,
-    fontFamily: "Brblack",
+    fontFamily: "RBblack",
   },
   boxGeneral2: {
     flex: 1,

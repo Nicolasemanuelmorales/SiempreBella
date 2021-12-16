@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button } from "react-native-paper";
 import colors from "../../../assets/colors";
 import Turno from "../../models/Turno";
@@ -68,20 +69,21 @@ export default function CardTurno(props: IProps) {
           >
             CANCELAR
           </Button>
-          <Button
-            style={{ elevation: 0 }}
-            contentStyle={{ height: 21 }}
-            mode="contained"
-            color={colors.PRINCIPAL}
-            labelStyle={{
-              marginTop: 0,
-              marginBottom: 0,
-              marginLeft: 6,
-              marginRight: 6,
-            }}
-            children={"Modificar"}
-            onPress={() => action(true)}
-          />
+          <TouchableOpacity activeOpacity={1} onPress={() => action(true)}>
+            <Button
+              style={{ elevation: 0 }}
+              contentStyle={{ height: 21 }}
+              mode="contained"
+              color={colors.PRINCIPAL}
+              labelStyle={{
+                marginTop: 0,
+                marginBottom: 0,
+                marginLeft: 6,
+                marginRight: 6,
+              }}
+              children={"Modificar"}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </View>

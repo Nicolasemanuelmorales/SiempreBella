@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Image, Pressable, ScrollView, Text, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Button, HelperText, Switch, TextInput } from "react-native-paper";
 import colors from "../../../assets/colors";
 import Boton from "../../components/Boton/Boton.components";
@@ -199,32 +206,37 @@ export default function Login(props: IProps) {
               <Boton title="Ingresar" action={login} />
             </View>
             <View style={{ flex: 1 }}>
-              <Button
-                style={{ elevation: 0 }}
-                contentStyle={{ height: 37 }}
-                mode="contained"
-                color={colors.PRINCIPAL}
-                labelStyle={styles.labelS}
-                children={"Registrar"}
+              <TouchableOpacity
+                activeOpacity={1}
                 onPress={() => navigation.navigate("Registrar")}
-              />
+              >
+                <Button
+                  style={{ elevation: 0 }}
+                  contentStyle={{ height: 37 }}
+                  mode="contained"
+                  color={colors.PRINCIPAL}
+                  labelStyle={styles.labelS}
+                  children={"Registrar"}
+                />
+              </TouchableOpacity>
             </View>
           </View>
 
           <View style={styles.mb}>
-            <Button
-              icon={() => (
-                <Icon name={"facebook"} size={20} color={colors.BLANCO} />
-              )}
-              style={styles.elev}
-              mode="contained"
-              color={colors.FACEBOOK}
-              onPress={() => console.log("")}
-            >
-              Ingresar con Facebook
-            </Button>
+            <TouchableOpacity activeOpacity={1} onPress={() => console.log("")}>
+              <Button
+                icon={() => (
+                  <Icon name={"facebook"} size={20} color={colors.BLANCO} />
+                )}
+                style={styles.elev}
+                mode="contained"
+                color={colors.FACEBOOK}
+              >
+                Ingresar con Facebook
+              </Button>
+            </TouchableOpacity>
           </View>
-          <View>
+          <TouchableOpacity activeOpacity={1} onPress={() => console.log("")}>
             <Button
               icon={() => (
                 <Image
@@ -235,11 +247,10 @@ export default function Login(props: IProps) {
               style={styles.elev}
               mode="contained"
               color={colors.GMAIL}
-              onPress={() => console.log("")}
             >
               Ingresar con Gmail  
             </Button>
-          </View>
+          </TouchableOpacity>
 
           <Text
             style={{

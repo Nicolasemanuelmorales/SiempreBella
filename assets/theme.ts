@@ -3,17 +3,23 @@ import { DefaultTheme } from "react-native-paper";
 export const theme = {
   ...DefaultTheme,
   fonts: {
-    bold: {
-      fontFamily: "Brblack",
+    black: {
+      fontFamily: "RBlack",
     },
-    regular: {
-      fontFamily: "BrBrregular",
+    bold: {
+      fontFamily: "RBold",
     },
     medium: {
-      fontFamily: "Brmedium",
+      fontFamily: "Rmedium",
+    },
+    regular: {
+      fontFamily: "RRregular",
     },
     light: {
-      fontFamily: "Brlight",
+      fontFamily: "RLight",
+    },
+    thin: {
+      fontFamily: "RThin",
     },
   },
 };

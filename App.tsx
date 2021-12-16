@@ -11,10 +11,12 @@ export default function App() {
   const [fonLoad, setFonLoad] = useState(false);
   const loadFont = async () => {
     await Font.loadAsync({
-      Brblack: require("./assets/font/Brandon_bld.otf"),
-      BrBrregular: require("./assets/font/Brandon_reg.otf"),
-      Brmedium: require("./assets/font/Brandon_med.otf"),
-      Brlight: require("./assets/font/Brandon_light.otf"),
+      RBlack: require("./assets/font/Roboto-Black.ttf"),
+      RBold: require("./assets/font/Roboto-Bold.ttf"),
+      Rmedium: require("./assets/font/Roboto-Medium.ttf"),
+      RRregular: require("./assets/font/Roboto-Regular.ttf"),
+      RLight: require("./assets/font/Roboto-Light.ttf"),
+      RThin: require("./assets/font/Roboto-Thin.ttf"),
     }).then(() => setFonLoad(true));
   };
   const callFunctionAsync = () => {
