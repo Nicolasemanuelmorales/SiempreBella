@@ -10,10 +10,10 @@ export const theme = {
       fontFamily: "RBold",
     },
     medium: {
-      fontFamily: "Rmedium",
+      fontFamily: "RMedium",
     },
     regular: {
-      fontFamily: "RRregular",
+      fontFamily: "RRegular",
     },
     light: {
       fontFamily: "RLight",

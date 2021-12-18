@@ -13,8 +13,8 @@ export default function App() {
     await Font.loadAsync({
       RBlack: require("./assets/font/Roboto-Black.ttf"),
       RBold: require("./assets/font/Roboto-Bold.ttf"),
-      Rmedium: require("./assets/font/Roboto-Medium.ttf"),
-      RRregular: require("./assets/font/Roboto-Regular.ttf"),
+      RMedium: require("./assets/font/Roboto-Medium.ttf"),
+      RRegular: require("./assets/font/Roboto-Regular.ttf"),
       RLight: require("./assets/font/Roboto-Light.ttf"),
       RThin: require("./assets/font/Roboto-Thin.ttf"),
     }).then(() => setFonLoad(true));

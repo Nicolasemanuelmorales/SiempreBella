@@ -38,13 +38,14 @@ const styles = StyleSheet.create({
   inactive: {
     fontSize: 16,
     color: "black",
+    fontFamily: "RRegular",
   },
   img: {
     width: 60,
     height: 60,
   },
   title: {
-    fontWeight: "bold",
+    fontFamily: "RBold",
     color: "#fff",
     fontSize: 20,
   },

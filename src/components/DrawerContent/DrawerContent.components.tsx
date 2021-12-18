@@ -68,7 +68,7 @@ function DrawerNavigatorContent({ navigation }: IProps) {
         >
           <Drawer.Item
             label={<Text style={styles.inactive}>Inicio</Text>}
-            style={styles.drawerStyle}
+            style={[styles.drawerStyle, { marginTop: 0 }]}
             icon={() => (
               <Icon
                 style={styles.icon}

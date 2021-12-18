@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 import colors from "../../../assets/colors";
 
 const styles = StyleSheet.create({
@@ -6,10 +6,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     marginBottom: 20,
-    marginTop: "5%",
+    marginTop: StatusBar.currentHeight + 20,
   },
   minH: {
-    minHeight: 200,
+    marginBottom: 20,
   },
   img: {
     width: 150,
@@ -36,14 +36,27 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     marginLeft: 6,
     marginRight: 6,
+    fontFamily: "RMedium",
   },
   mb25: {
     marginBottom: 25,
+  },
+  fFM: {
+    fontFamily: "RMedium",
   },
   boxBoton: {
     marginBottom: 20,
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  boxRecordar: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  recor: {
+    fontSize: 16,
+    marginRight: 2,
+    color: "#757575",
   },
   ingresar: {
     flex: 1,
@@ -53,6 +66,12 @@ const styles = StyleSheet.create({
   imgG: {
     width: 20,
     height: 21,
+  },
+  olvPass: {
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 20,
+    color: "#757575",
   },
 });
 export default styles;

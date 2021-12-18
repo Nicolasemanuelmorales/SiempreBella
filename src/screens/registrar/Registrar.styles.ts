@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 import colors from "../../../assets/colors";
 
 const styles = StyleSheet.create({
@@ -6,10 +6,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     marginBottom: 20,
-    paddingTop: "5%",
+    marginTop: 20,
   },
   minH: {
-    minHeight: 200,
+    marginBottom: 20,
   },
   img: {
     width: 150,
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     color: colors.PRINCIPAL,
     textAlign: "center",
     marginTop: -20,
-    fontFamily: "RBblack",
+    fontFamily: "RBlack",
   },
   boxGeneral2: {
     flex: 1,

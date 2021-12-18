@@ -21,6 +21,7 @@ export default function Boton(props: IProps) {
         mode="contained"
         color={colors.PRINCIPAL}
         labelStyle={{
+          fontFamily: "RMedium",
           fontSize: size > 0 ? size : 14,
           marginTop: 0,
           marginBottom: 0,

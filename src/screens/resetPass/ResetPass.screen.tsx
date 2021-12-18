@@ -8,6 +8,7 @@ import auth from "../../../firebase";
 import Boton from "../../components/Boton/Boton.components";
 import loaderAction from "../../redux/actions/LoaderAction";
 import { validateEmail } from "../../utils/validateEmail";
+import styles from "../resetPass/ResetPass.styles";
 interface IProps {
   navigation: any;
 }
@@ -42,8 +43,8 @@ export default function ResetPass(props: IProps) {
   };
 
   return (
-    <View style={{ marginHorizontal: 20, marginTop: 20 }}>
-      <Text style={{ marginBottom: 20, fontSize: 16 }}>
+    <View style={styles.boxGeneral}>
+      <Text style={styles.descripcion}>
         Ingrese su correo electronico y le enviaremos un link para poder cambiar
         la contraseña.
       </Text>

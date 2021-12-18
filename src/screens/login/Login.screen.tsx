@@ -187,10 +187,8 @@ export default function Login(props: IProps) {
             >
               {passError}
             </HelperText>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text style={{ fontSize: 16, marginRight: 2, color: "#757575" }}>
-                Recordar
-              </Text>
+            <View style={styles.boxRecordar}>
+              <Text style={styles.recor}>Recordar</Text>
               <Switch
                 value={recordarme}
                 onTouchStart={() => {
@@ -228,6 +226,7 @@ export default function Login(props: IProps) {
                 icon={() => (
                   <Icon name={"facebook"} size={20} color={colors.BLANCO} />
                 )}
+                labelStyle={styles.fFM}
                 style={styles.elev}
                 mode="contained"
                 color={colors.FACEBOOK}
@@ -244,6 +243,7 @@ export default function Login(props: IProps) {
                   source={require("../../../assets/images/gmail.jpg")}
                 />
               )}
+              labelStyle={styles.fFM}
               style={styles.elev}
               mode="contained"
               color={colors.GMAIL}
@@ -253,12 +253,7 @@ export default function Login(props: IProps) {
           </TouchableOpacity>
 
           <Text
-            style={{
-              fontSize: 16,
-              textAlign: "center",
-              marginTop: 20,
-              color: "#757575",
-            }}
+            style={styles.olvPass}
             onPress={() => navigation.navigate("ResetPass")}
           >
             ¿Olvidaste tu contraseña?
